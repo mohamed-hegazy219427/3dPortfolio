@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
-import { github } from "../assets";
+import { github ,netlify} from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
@@ -14,7 +14,7 @@ const ProjectCard = ({
 	description,
 	tags,
 	image,
-	source_code_link,
+	source_code_link,live_demo
 }) => {
 	return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
@@ -35,11 +35,21 @@ const ProjectCard = ({
 
           <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
             <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+              onClick={() => window.open(source_code_link, "_blank")} title="source code"
+              className='black-gradient border-slate-400 border w-10 h-10 shadow-xl rounded-full flex justify-center items-center cursor-pointer'
             >
               <img
                 src={github}
+                alt='source code'
+                className='w-1/2 h-1/2 object-contain'
+              />
+            </div>
+            <div
+              onClick={() => window.open(live_demo, "_blank")} title="live demo"
+              className='border-slate-400 border bg-slate-50 shadow-xl ms-1 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+            >
+              <img
+                src={netlify}
                 alt='source code'
                 className='w-1/2 h-1/2 object-contain'
               />
@@ -49,7 +59,7 @@ const ProjectCard = ({
 
         <div className='mt-5'>
           <h3 className='text-white font-bold text-[24px]'>{name}</h3>
-          <p className='mt-2 text-secondary text-[14px]'>{description}</p>
+          <p className='mt-2 text-secondary text-ellipsis overflow-clip h-32 text-[14px]'>{description}</p>
         </div>
 
         <div className='mt-4 flex flex-wrap gap-2'>
