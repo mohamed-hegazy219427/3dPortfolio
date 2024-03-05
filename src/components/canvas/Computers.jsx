@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 import { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 const Computers = ({ isMobile }) => {
-	const computer = useGLTF("./desktop_pc/scene.gltf");
+	// const computer = useGLTF("./desktop_pc/scene.gltf");
+	const computer = useLoader(GLTFLoader ,"./desktop_pc/scene.gltf")
 
 	return (
 		<>
@@ -26,6 +28,7 @@ const Computers = ({ isMobile }) => {
 					shadow-mapSize={1024}
 				/>
 				<primitive
+				
 					object={computer.scene}
 					scale={isMobile ? 1.5 : 2}
 					position={isMobile ? [-2, -7, -2] : [-4, -10, -2]}
