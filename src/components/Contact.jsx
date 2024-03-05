@@ -32,16 +32,14 @@ const Contact = () => {
 			.send(
 				// service_vmh56wm
 				// template_uw3j53m
-				"service_vmh56wm",
-				"template_uw3j53m",
+				"service_7b155dg",
+				"template_ibzoma6",
 				{
 					from_name: form.name,
-					to_name: "Mohamed Hegazy",
 					from_email: form.email,
-					to_email: "mohamedhegazy219427@gmail.com",
 					message: form.message,
 				},
-				'NLQpYVgaRjO8d2gyQ'
+				'CuRfaAudaTtVO6joN'
 			)
 			.then(
 				() => {

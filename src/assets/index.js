@@ -29,8 +29,14 @@ import tesla from "./company/tesla.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import bootstrap from './tech/bootstrap.png'
+import mongoose from './tech/mongoose.png'
+import sequelize from './tech/sequelize.svg'
 
 export {
+  sequelize,
+  mongoose,
+  bootstrap,
   logo,
   backend,
   creator,

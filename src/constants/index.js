@@ -1,7 +1,5 @@
 import {
-    mobile,
     backend,
-    creator,
     web,
     javascript,
     typescript,
@@ -19,10 +17,9 @@ import {
     starbucks,
     tesla,
     shopify,
-    carrent,
+    carrent,sequelize,
     jobit,
-    tripguide,
-    threejs,
+    tripguide,bootstrap,mongoose
   } from "../assets";
   
   export const navLinks = [
@@ -42,21 +39,15 @@ import {
   
   const services = [
     {
-      title: "Web Developer",
+      title: "Frontend Developer",
       icon: web,
     },
-    {
-      title: "React Native Developer",
-      icon: mobile,
-    },
+    
     {
       title: "Backend Developer",
       icon: backend,
     },
-    {
-      title: "Content Creator",
-      icon: creator,
-    },
+   
   ];
   
   const technologies = [
@@ -67,6 +58,9 @@ import {
     {
       name: "CSS 3",
       icon: css,
+    },{
+      name: "Bootstrap",
+      icon: bootstrap,
     },
     {
       name: "JavaScript",
@@ -95,11 +89,14 @@ import {
     {
       name: "MongoDB",
       icon: mongodb,
+    },{
+      name: "Mongoose",
+      icon: mongoose,
+    },{
+      name: "Sequelize",
+      icon: sequelize,
     },
-    {
-      name: "Three JS",
-      icon: threejs,
-    },
+    
     {
       name: "git",
       icon: git,
