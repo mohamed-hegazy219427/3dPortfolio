@@ -17,6 +17,11 @@ import {
   sequelize,
   bootstrap,
   mongoose,
+  kareem,
+  hussein,
+  alaa,
+  azony,
+  ali,
 } from "../assets";
 
 export const navLinks = [
@@ -132,27 +137,43 @@ const experiences = [
 const testimonials = [
   {
     testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
+      "I thought it was impossible to make a website as beautiful as our product, but mohamed hegazy proved me wrong.",
+    name: "Ahmed Alaa",
+    designation: "Section Head",
+    company: "Outsuka Misr",
+    image: alaa,
   },
   {
     testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
+      "I've never met a web developer who truly cares about their clients' success like mohamed hegazy does.",
+    name: "Mahmoud Ali",
+    designation: "Qc Head",
+    company: "Elsraa",
+    image: ali,
   },
   {
     testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
+      "His expertise and creativity in web development not only met but exceeded our expectations.",
+    name: "Abdullah Elazony",
+    designation: "Odoo Consultant",
+    company: "U Pharma",
+    image: azony,
+  },
+  {
+    testimonial:
+      "After mohamed hegazy optimized our website, our traffic increased by 50%. We can't thank them enough!",
+    name: "Kareem Mohamed",
+    designation: "Odoo Consultant",
+    company: "U Pharma",
+    image: kareem,
+  },
+  {
+    testimonial:
+      "His technical proficiency and passion for coding have been instrumental in driving the success of our projects.",
+    name: "Ahmed Hussein",
+    designation: "QA Head",
+    company: "Nerhadou",
+    image: hussein,
   },
 ];
 
@@ -198,10 +219,10 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: 'https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c85f26795530008bf65a5/screenshot_2023-11-09-07-11-17-0000.png&fit=cover&h=500&w=800',
+    image:
+      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c85f26795530008bf65a5/screenshot_2023-11-09-07-11-17-0000.png&fit=cover&h=500&w=800",
     source_code_link: "https://github.com/MohamedHegazy2020/Yummy.git",
     live_demo: "https://mohamedhegazy-yammy.netlify.app/",
-
   },
   {
     name: "GPT-3",
@@ -212,13 +233,14 @@ const projects = [
         name: "react",
         color: "blue-text-gradient",
       },
-     
+
       {
         name: "css",
         color: "pink-text-gradient",
       },
     ],
-    image: 'https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/65e6747c9136c02c67529945/screenshot_2024-03-05-01-26-31-0000.webp&fit=cover&h=500&w=800',
+    image:
+      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/65e6747c9136c02c67529945/screenshot_2024-03-05-01-26-31-0000.webp&fit=cover&h=500&w=800",
     live_demo: "https://mohamed-hegazy-gpt3.netlify.app",
     source_code_link: "https://github.com/MohamedHegazy2020/gpt3_msh.git",
   },
@@ -244,49 +266,24 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: 'https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c97956125b7000847ccd0/screenshot_2023-11-09-08-26-08-0000.png&fit=cover&h=500&w=800',
+    image:
+      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c97956125b7000847ccd0/screenshot_2023-11-09-08-26-08-0000.png&fit=cover&h=500&w=800",
     live_demo: "https://mohamedhegazy-fokir.netlify.app",
     source_code_link: "https://github.com/MohamedHegazy2020/Fokir.git",
-  }, {
+  },
+  {
     name: "weather-app",
-    description: 
-    'A weather website that provides 3-day forecasting with city search. Uses HTML, CSS , Bootstrap , and JavaScript. Integrates data from Weather API using fetch API. Provides humidity, wind speed, and UV index.    '
-  ,  tags: [
-    {
-      name: "html",
-      color: "blue-text-gradient",
-    },
-    {
-      name: "js",
-      color: "green-text-gradient",
-    },
-    {
-      name: "restapi",
-      color: "green-text-gradient",
-    },
-    {
-      name: "bootstrap",
-      color: "pink-text-gradient",
-    }
-     
-      ,{
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: 'https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654cb5bb97bf550007d6bcbe/screenshot_2023-11-09-10-34-44-0000.png&fit=cover&h=500&w=800',
-    live_demo: "https://mohamedhegazy-weather-app.netlify.app",
-    source_code_link: "https://github.com/MohamedHegazy2020/weather-app.git",
-  }, {
-    name: "game-over",
     description:
-    "A React website for game exploration could have a recommendation engine that suggests games based on user preferences. Users can filter and sort games based on various criteria and explore them in a fun and interactive way.    "
-    ,tags: [
+      "A weather website that provides 3-day forecasting with city search. Uses HTML, CSS , Bootstrap , and JavaScript. Integrates data from Weather API using fetch API. Provides humidity, wind speed, and UV index.    ",
+    tags: [
       {
-        name: "react",
+        name: "html",
         color: "blue-text-gradient",
       },
-     
+      {
+        name: "js",
+        color: "green-text-gradient",
+      },
       {
         name: "restapi",
         color: "green-text-gradient",
@@ -294,17 +291,48 @@ const projects = [
       {
         name: "bootstrap",
         color: "pink-text-gradient",
-      }
-       
-        ,{
-          name: "css",
-          color: "pink-text-gradient",
-        },
+      },
+
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
     ],
-    image: 'https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/64c326acb700cd2bfa1693cd/screenshot_2023-07-28-02-24-13-0000.png&fit=cover&h=500&w=800',
+    image:
+      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654cb5bb97bf550007d6bcbe/screenshot_2023-11-09-10-34-44-0000.png&fit=cover&h=500&w=800",
+    live_demo: "https://mohamedhegazy-weather-app.netlify.app",
+    source_code_link: "https://github.com/MohamedHegazy2020/weather-app.git",
+  },
+  {
+    name: "game-over",
+    description:
+      "A React website for game exploration could have a recommendation engine that suggests games based on user preferences. Users can filter and sort games based on various criteria and explore them in a fun and interactive way.    ",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+
+      {
+        name: "restapi",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap",
+        color: "pink-text-gradient",
+      },
+
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image:
+      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/64c326acb700cd2bfa1693cd/screenshot_2023-07-28-02-24-13-0000.png&fit=cover&h=500&w=800",
     live_demo: "https://mohamedhegazy-gameover.netlify.app",
     source_code_link: "https://github.com/MohamedHegazy2020/game-over.git",
-  }, {
+  },
+  {
     name: "game-reviews",
     description:
       "A website for game lovers to explore, review, and rate games from various genres and platforms. Users can filter, search, and view games with ratings, reviews, screenshots, and trailers. Users can also create profiles and favorite games.      ",
@@ -330,10 +358,11 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: 'https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c7d937fa51d00087dcbfe/screenshot_2023-11-09-06-35-10-0000.png&fit=cover&h=500&w=800',
+    image:
+      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c7d937fa51d00087dcbfe/screenshot_2023-11-09-06-35-10-0000.png&fit=cover&h=500&w=800",
     live_demo: "https://mohamedhegazy-game-review.netlify",
     source_code_link: "https://github.com/MohamedHegazy2020/game-reviews.git",
-  }, 
+  },
 ];
 
 export { services, technologies, experiences, testimonials, projects };

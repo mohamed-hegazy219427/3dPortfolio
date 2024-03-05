@@ -24,11 +24,17 @@ import threejs from "./tech/threejs.svg";
 
 import Route from "./company/Route.jpg";
 
+import bootstrap from "./tech/bootstrap.png";
+import mongoose from "./tech/mongoose.png";
+import sequelize from "./tech/sequelize.svg";
 
 
-import bootstrap from './tech/bootstrap.png'
-import mongoose from './tech/mongoose.png'
-import sequelize from './tech/sequelize.svg'
+
+import kareem from './testimonials/kareeim.jpg'
+import  hussein from './testimonials/Ahmed Hussein.jpg'
+import  alaa from './testimonials/alaa.jpg'
+import  azony from './testimonials/azony.jpg'
+import  ali from './testimonials/ali.jpg'
 
 export {
   sequelize,
@@ -55,7 +61,7 @@ export {
   tailwind,
   typescript,
   threejs,
-Route,  carrent,netlify,
-  jobit,
-  tripguide,
+  Route,
+  netlify,
+  kareem,hussein,alaa,azony,ali
 };
