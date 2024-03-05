@@ -12,7 +12,7 @@ const TechCard = ({ technology, index }) => {
         <Tilt className="xs:w-[150px] w-full  ">
           <motion.div
             className="w-full green-pink-gradient  p-[1px] rounded-[20px] shadow-card "
-            variants={fadeIn("right", "spring", 0.4 * index, 0.5)}
+            variants={fadeIn("right", "spring", index * 0.5, 0.75)}
           >
             <div className="bg-tertiary rounded-[20px]  h-[150px] flex justify-evenly items-center flex-col">
               <img
