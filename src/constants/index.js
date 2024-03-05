@@ -244,125 +244,125 @@ const projects = [
     live_demo: "https://mohamed-hegazy-gpt3.netlify.app",
     source_code_link: "https://github.com/MohamedHegazy2020/gpt3_msh.git",
   },
-  // {
-  //   name: "Fokir",
-  //   description:
-  //     "The landing page is designed to showcase the developer’s skills, services, projects, and achievements in web development. The page aims to attract potential clients, employers, or collaborators who are looking for a professional and creative web developer.      ",
-  //   tags: [
-  //     {
-  //       name: "html",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "js",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "bootarap",
-  //       color: "pink-text-gradient",
-  //     },
-  //     {
-  //       name: "css",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image:
-  //     "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c97956125b7000847ccd0/screenshot_2023-11-09-08-26-08-0000.png&fit=cover&h=500&w=800",
-  //   live_demo: "https://mohamedhegazy-fokir.netlify.app",
-  //   source_code_link: "https://github.com/MohamedHegazy2020/Fokir.git",
-  // },
-  // {
-  //   name: "weather-app",
-  //   description:
-  //     "A weather website that provides 3-day forecasting with city search. Uses HTML, CSS , Bootstrap , and JavaScript. Integrates data from Weather API using fetch API. Provides humidity, wind speed, and UV index.    ",
-  //   tags: [
-  //     {
-  //       name: "html",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "js",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "restapi",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "bootstrap",
-  //       color: "pink-text-gradient",
-  //     },
+  {
+    name: "Fokir",
+    description:
+      "The landing page is designed to showcase the developer’s skills, services, projects, and achievements in web development. The page aims to attract potential clients, employers, or collaborators who are looking for a professional and creative web developer.      ",
+    tags: [
+      {
+        name: "html",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootarap",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image:
+      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c97956125b7000847ccd0/screenshot_2023-11-09-08-26-08-0000.png&fit=cover&h=500&w=800",
+    live_demo: "https://mohamedhegazy-fokir.netlify.app",
+    source_code_link: "https://github.com/MohamedHegazy2020/Fokir.git",
+  },
+  {
+    name: "weather-app",
+    description:
+      "A weather website that provides 3-day forecasting with city search. Uses HTML, CSS , Bootstrap , and JavaScript. Integrates data from Weather API using fetch API. Provides humidity, wind speed, and UV index.    ",
+    tags: [
+      {
+        name: "html",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "restapi",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap",
+        color: "pink-text-gradient",
+      },
 
-  //     {
-  //       name: "css",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image:
-  //     "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654cb5bb97bf550007d6bcbe/screenshot_2023-11-09-10-34-44-0000.png&fit=cover&h=500&w=800",
-  //   live_demo: "https://mohamedhegazy-weather-app.netlify.app",
-  //   source_code_link: "https://github.com/MohamedHegazy2020/weather-app.git",
-  // },
-  // {
-  //   name: "game-over",
-  //   description:
-  //     "A React website for game exploration could have a recommendation engine that suggests games based on user preferences. Users can filter and sort games based on various criteria and explore them in a fun and interactive way.    ",
-  //   tags: [
-  //     {
-  //       name: "react",
-  //       color: "blue-text-gradient",
-  //     },
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image:
+      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654cb5bb97bf550007d6bcbe/screenshot_2023-11-09-10-34-44-0000.png&fit=cover&h=500&w=800",
+    live_demo: "https://mohamedhegazy-weather-app.netlify.app",
+    source_code_link: "https://github.com/MohamedHegazy2020/weather-app.git",
+  },
+  {
+    name: "game-over",
+    description:
+      "A React website for game exploration could have a recommendation engine that suggests games based on user preferences. Users can filter and sort games based on various criteria and explore them in a fun and interactive way.    ",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
 
-  //     {
-  //       name: "restapi",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "bootstrap",
-  //       color: "pink-text-gradient",
-  //     },
+      {
+        name: "restapi",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap",
+        color: "pink-text-gradient",
+      },
 
-  //     {
-  //       name: "css",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image:
-  //     "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/64c326acb700cd2bfa1693cd/screenshot_2023-07-28-02-24-13-0000.png&fit=cover&h=500&w=800",
-  //   live_demo: "https://mohamedhegazy-gameover.netlify.app",
-  //   source_code_link: "https://github.com/MohamedHegazy2020/game-over.git",
-  // },
-  // {
-  //   name: "game-reviews",
-  //   description:
-  //     "A website for game lovers to explore, review, and rate games from various genres and platforms. Users can filter, search, and view games with ratings, reviews, screenshots, and trailers. Users can also create profiles and favorite games.      ",
-  //   tags: [
-  //     {
-  //       name: "html",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "js",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "restapi",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "bootstrap",
-  //       color: "pink-text-gradient",
-  //     },
-  //     {
-  //       name: "css",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image:
-  //     "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c7d937fa51d00087dcbfe/screenshot_2023-11-09-06-35-10-0000.png&fit=cover&h=500&w=800",
-  //   live_demo: "https://mohamedhegazy-game-review.netlify",
-  //   source_code_link: "https://github.com/MohamedHegazy2020/game-reviews.git",
-  // },
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image:
+      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/64c326acb700cd2bfa1693cd/screenshot_2023-07-28-02-24-13-0000.png&fit=cover&h=500&w=800",
+    live_demo: "https://mohamedhegazy-gameover.netlify.app",
+    source_code_link: "https://github.com/MohamedHegazy2020/game-over.git",
+  },
+  {
+    name: "game-reviews",
+    description:
+      "A website for game lovers to explore, review, and rate games from various genres and platforms. Users can filter, search, and view games with ratings, reviews, screenshots, and trailers. Users can also create profiles and favorite games.      ",
+    tags: [
+      {
+        name: "html",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "restapi",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image:
+      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c7d937fa51d00087dcbfe/screenshot_2023-11-09-06-35-10-0000.png&fit=cover&h=500&w=800",
+    live_demo: "https://mohamedhegazy-game-review.netlify",
+    source_code_link: "https://github.com/MohamedHegazy2020/game-reviews.git",
+  },
 ];
 
 export { services, technologies, experiences, testimonials, projects };
