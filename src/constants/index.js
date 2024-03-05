@@ -360,7 +360,7 @@ const projects = [
     ],
     image:
       "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c7d937fa51d00087dcbfe/screenshot_2023-11-09-06-35-10-0000.png&fit=cover&h=500&w=800",
-    live_demo: "https://mohamedhegazy-game-review.netlify",
+    live_demo: "https://mohamedhegazy-game-review.netlify.app",
     source_code_link: "https://github.com/MohamedHegazy2020/game-reviews.git",
   },
 ];
