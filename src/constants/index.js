@@ -22,7 +22,7 @@ import {
   alaa,
   azony,
   ali,
-  ifuture,
+  // ifuture,
   payload,
   freshCart,
   gpt3,
@@ -145,7 +145,7 @@ const experiences = [
   {
     title: "Frontend Developer",
     company_name: "Interactive Future",
-    icon: ifuture,
+    icon: Route,
     iconBg: "#383E56",
     date: "April 2024 - Now",
     points: [
