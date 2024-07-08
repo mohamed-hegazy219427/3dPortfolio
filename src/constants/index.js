@@ -30,6 +30,7 @@ import {
   gameOver,
   gameReviews,
   Ifuture,
+  yummy,
 } from "../assets/index.js";
 
 export const navLinks = [
@@ -249,8 +250,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image:
-      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c85f26795530008bf65a5/screenshot_2023-11-09-07-11-17-0000.png&fit=cover&h=500&w=800",
+    image:yummy,
     source_code_link: "https://github.com/MohamedHegazy2020/Yummy.git",
     live_demo: "https://mohamedhegazy-yummy.netlify.app",
   },
