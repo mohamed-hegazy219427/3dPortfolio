@@ -30,7 +30,7 @@ import {
   weather,
   gameOver,
   gameReviews,
-} from "../assets";
+} from "../assets/index.js";
 
 export const navLinks = [
   {
