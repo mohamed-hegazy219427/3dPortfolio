@@ -22,6 +22,14 @@ import {
   alaa,
   azony,
   ali,
+  ifuture,
+  payload,
+  freshCart,
+  gpt3,
+  fokir,
+  weather,
+  gameOver,
+  gameReviews,
 } from "../assets";
 
 export const navLinks = [
@@ -100,6 +108,7 @@ const technologies = [
     name: "Sequelize",
     icon: sequelize,
   },
+  { name: "Payload", icon: payload },
 
   {
     name: "git",
@@ -109,6 +118,7 @@ const technologies = [
     name: "figma",
     icon: figma,
   },
+
   {
     name: "docker",
     icon: docker,
@@ -130,6 +140,26 @@ const experiences = [
       "Learning and applying best practices in web development to enhance skills and knowledge",
       "Assisting in the deployment and maintenance of web applications",
       "Receiving mentorship and guidance from experienced developers to support professional growth and development.",
+    ],
+  },
+  {
+    title: "Frontend Developer",
+    company_name: "Interactive Future",
+    icon: ifuture,
+    iconBg: "#383E56",
+    date: "April 2024 - Now",
+    points: [
+      "Collaborating with designers to translate visual designs into interactive web elements.",
+      "Building user interfaces that are visually appealing and user-friendly.",
+      "Writing clean, efficient, and maintainable code to contribute to the development of projects",
+      "Learning and applying best practices in web development to enhance skills and knowledge",
+      "Assisting in the deployment and maintenance of web applications",
+      "Receiving mentorship and guidance from experienced developers to support professional growth and development.",
+      "Integrating front-end components with back-end services and APIs.",
+      "Conducting code reviews and providing constructive feedback to team members.",
+      "Optimizing web performance to ensure fast loading times and smooth user experience.",
+      "Troubleshooting and debugging issues to maintain the quality of the codebase.",
+      "Integrating With Payload CMS and Other headless CMS in large scale projects.",
     ],
   },
 ];
@@ -196,7 +226,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: "https://app.netlify.com/06dc8dda360a79a8ec50.webp",
+    image: freshCart,
     source_code_link:
       "https://github.com/MohamedHegazy2020/e-commerce-freshcart.git",
     live_demo: "https://mohamedhegazy-freshcart.netlify.app",
@@ -222,7 +252,7 @@ const projects = [
     image:
       "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c85f26795530008bf65a5/screenshot_2023-11-09-07-11-17-0000.png&fit=cover&h=500&w=800",
     source_code_link: "https://github.com/MohamedHegazy2020/Yummy.git",
-    live_demo: "https://mohamedhegazy-yammy.netlify.app/",
+    live_demo: "https://mohamedhegazy-yummy.netlify.app",
   },
   {
     name: "GPT-3",
@@ -239,15 +269,14 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image:
-      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/65e6747c9136c02c67529945/screenshot_2024-03-05-01-26-31-0000.webp&fit=cover&h=500&w=800",
-    live_demo: "https://mohamed-hegazy-gpt3.netlify.app",
+    image:gpt3,
+    live_demo: "https://mohamedhegazy-gpt3.netlify.app",
     source_code_link: "https://github.com/MohamedHegazy2020/gpt3_msh.git",
   },
   {
     name: "Fokir",
     description:
-      "The landing page is designed to showcase the developer’s skills, services, projects, and achievements in web development. The page aims to attract potential clients, employers, or collaborators who are looking for a professional and creative web developer.      ",
+      "The landing page is designed to showcase the developer’s skills, services, projects, and achievements in web development. The page aims to attract potential clients, employers, or collaborators looking for a professional and creative web developer.",
     tags: [
       {
         name: "html",
@@ -266,15 +295,13 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image:
-      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c97956125b7000847ccd0/screenshot_2023-11-09-08-26-08-0000.png&fit=cover&h=500&w=800",
-    live_demo: "https://mohamedhegazy-fokir.netlify.app",
+    image:fokir,    live_demo: "https://mohamedhegazy-fokir.netlify.app",
     source_code_link: "https://github.com/MohamedHegazy2020/Fokir.git",
   },
   {
     name: "weather-app",
     description:
-      "A weather website that provides 3-day forecasting with city search. Uses HTML, CSS , Bootstrap , and JavaScript. Integrates data from Weather API using fetch API. Provides humidity, wind speed, and UV index.    ",
+      "A weather website that provides 3-day forecasting with a city search. Uses HTML, CSS, Bootstrap, and JavaScript. Integrates data from Weather API using fetch API. Provides humidity, wind speed, and UV index.       ",
     tags: [
       {
         name: "html",
@@ -298,8 +325,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image:
-      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654cb5bb97bf550007d6bcbe/screenshot_2023-11-09-10-34-44-0000.png&fit=cover&h=500&w=800",
+    image:weather,
     live_demo: "https://mohamedhegazy-weather-app.netlify.app",
     source_code_link: "https://github.com/MohamedHegazy2020/weather-app.git",
   },
@@ -322,14 +348,10 @@ const projects = [
         color: "pink-text-gradient",
       },
 
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
+      
     ],
     image:
-      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/64c326acb700cd2bfa1693cd/screenshot_2023-07-28-02-24-13-0000.png&fit=cover&h=500&w=800",
-    live_demo: "https://mohamedhegazy-gameover.netlify.app",
+gameOver,    live_demo: "https://mohamedhegazy-game-over.netlify.app",
     source_code_link: "https://github.com/MohamedHegazy2020/game-over.git",
   },
   {
@@ -358,9 +380,8 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image:
-      "https://app.netlify.com/.netlify/images?url=https://d33wubrfki0l68.cloudfront.net/654c7d937fa51d00087dcbfe/screenshot_2023-11-09-06-35-10-0000.png&fit=cover&h=500&w=800",
-    live_demo: "https://mohamedhegazy-game-review.netlify.app",
+    image:gameReviews,
+    live_demo: "https://mohamedhegazy-game-reviews.netlify.app/",
     source_code_link: "https://github.com/MohamedHegazy2020/game-reviews.git",
   },
 ];
