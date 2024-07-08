@@ -7,7 +7,7 @@ import github from "./github.png";
 import netlify from "./netlify-icon-seeklogo.svg";
 import menu from "./menu.svg";
 import close from "./close.svg";
-import ifuture from'./company/Ifuture.png'
+import ifuture from "./company/Ifuture.png";
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
@@ -28,36 +28,30 @@ import bootstrap from "./tech/bootstrap.png";
 import mongoose from "./tech/mongoose.png";
 import sequelize from "./tech/sequelize.svg";
 
-import payload from './tech/payload.jpg'
+import payload from "./tech/payload.jpg";
 
-import kareem from './testimonials/kareeim.jpg'
-import  hussein from './testimonials/Ahmed Hussein.jpg'
-import  alaa from './testimonials/alaa.jpg'
-import  azony from './testimonials/azony.jpg'
-import  ali from './testimonials/ali.jpg'
+import kareem from "./testimonials/kareeim.jpg";
+import hussein from "./testimonials/Ahmed Hussein.jpg";
+import alaa from "./testimonials/alaa.jpg";
+import azony from "./testimonials/azony.jpg";
+import ali from "./testimonials/ali.jpg";
 
-
-
-
-
-
-
-import freshCart from './projects/freshCart.png'
-import fokir from './projects/fokir.png'
-import gameOver from './projects/gameOver.png'
-import gameReviews from './projects/gameReviews.png'
-import gpt3 from './projects/gpt3.png'
-import yummy from './projects/yummy.png'
-import weather from './projects/weather.png'
-
-
-
-
-
-
+import freshCart from "./projects/freshCart.png";
+import fokir from "./projects/fokir.png";
+import gameOver from "./projects/gameOver.png";
+import gameReviews from "./projects/gameReviews.png";
+import gpt3 from "./projects/gpt3.png";
+import yummy from "./projects/yummy.png";
+import weather from "./projects/weather.png";
 
 export {
-  freshCart,gpt3,fokir,gameOver,gameReviews,yummy,weather,
+  freshCart,
+  gpt3,
+  fokir,
+  gameOver,
+  gameReviews,
+  yummy,
+  weather,
   payload,
   sequelize,
   mongoose,
@@ -86,5 +80,9 @@ export {
   threejs,
   Route,
   netlify,
-  kareem,hussein,alaa,azony,ali
+  kareem,
+  hussein,
+  alaa,
+  azony,
+  ali,
 };
