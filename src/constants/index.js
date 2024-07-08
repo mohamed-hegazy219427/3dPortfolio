@@ -22,7 +22,6 @@ import {
   alaa,
   azony,
   ali,
-  // ifuture,
   payload,
   freshCart,
   gpt3,
@@ -30,6 +29,7 @@ import {
   weather,
   gameOver,
   gameReviews,
+  Ifuture,
 } from "../assets/index.js";
 
 export const navLinks = [
@@ -145,7 +145,7 @@ const experiences = [
   {
     title: "Frontend Developer",
     company_name: "Interactive Future",
-    icon: Route,
+    icon: Ifuture,
     iconBg: "#383E56",
     date: "April 2024 - Now",
     points: [

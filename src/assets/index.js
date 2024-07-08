@@ -7,7 +7,7 @@ import github from "./github.png";
 import netlify from "./netlify-icon-seeklogo.svg";
 import menu from "./menu.svg";
 import close from "./close.svg";
-// import ifuture from "./company/Ifuture.png";
+import Ifuture from "./company/Ifuture.png";
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
@@ -62,7 +62,7 @@ export {
   mobile,
   web,
   github,
-  // ifuture,
+  Ifuture,
   menu,
   close,
   css,
