@@ -33,6 +33,17 @@ import {
   yummy,
   bitc,
   forkify,
+  shadcn,
+  daisy,
+  chackra,
+  framerMotion,
+  gsap,
+  nextjs,
+  threejs,
+  express,
+  nest,
+  prisma,
+  sanity,
 } from "../assets/index.js";
 
 export const navLinks = [
@@ -76,6 +87,13 @@ const technologies = [
     icon: bootstrap,
   },
   {
+    name: "Tailwind CSS",
+    icon: tailwind,
+  },
+  { name: "Shadcn UI", icon: shadcn },
+  { name: "Diasy UI", icon: daisy },
+  { name: "Chakra UI", icon: chackra },
+  {
     name: "JavaScript",
     icon: javascript,
   },
@@ -92,12 +110,31 @@ const technologies = [
     icon: redux,
   },
   {
-    name: "Tailwind CSS",
-    icon: tailwind,
+    name: "Next JS",
+    icon: nextjs,
   },
+  {
+    name: "GSAP",
+    icon: gsap,
+  },
+  { name: "Framer Motion", icon: framerMotion },
+  {
+    name: "Three JS",
+    icon: threejs,
+  },
+
   {
     name: "Node JS",
     icon: nodejs,
+  },
+
+  {
+    name: "Express JS",
+    icon: express,
+  },
+  {
+    name: "Nest JS",
+    icon: nest,
   },
   {
     name: "MongoDB",
@@ -111,7 +148,13 @@ const technologies = [
     name: "Sequelize",
     icon: sequelize,
   },
+  
+  {
+    name: "Prisma",
+    icon: prisma,
+  },
   { name: "Payload", icon: payload },
+  { name: "Sanity", icon: sanity },
 
   {
     name: "git",
@@ -177,7 +220,6 @@ const experiences = [
       "Ensured code quality with testing and version control",
       "Reduced deployment time by 30% through CI/CD automation",
       "Enhanced performance of main app by 25% via frontend optimization",
-      
     ],
   },
 ];
@@ -343,7 +385,8 @@ const projects = [
   {
     name: "Forkify",
     image: forkify,
-    description: "A web application built with the Model-View-Controller (MVC) architecture. The application allows users to search for recipes, view detailed information about recipes, save favorite recipes, and add new recipes to the list.",
+    description:
+      "A web application built with the Model-View-Controller (MVC) architecture. The application allows users to search for recipes, view detailed information about recipes, save favorite recipes, and add new recipes to the list.",
     tags: [
       {
         name: "html",

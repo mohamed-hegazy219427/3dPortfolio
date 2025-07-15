@@ -44,7 +44,29 @@ import gpt3 from "./projects/gpt3.png";
 import yummy from "./projects/yummy.png";
 import weather from "./projects/weather.png";
 import forkify from "./projects/forkify.png";
+import nest from "./tech/Nest.js.png";
+import nextjs from "./tech/Next.js.png";
+import prisma from "./tech/icons8-prisma-orm-50.png";
+import chackra from "./tech/chakra-ui-icon.png";
+import shadcn from "./tech/shadcn-ui-seeklogo.png";
+import daisy from "./tech/daisyui-seeklogo.png";
+import sanity from "./tech/sanity.png";
+import framerMotion from "./tech/framer-motion.png";
+import gsap from "./tech/gsap-greensock.png";
+import express from "./tech/Express.png";
+
+
 export {
+  nest,
+  nextjs,
+  prisma,
+  chackra,
+  shadcn,
+  daisy,
+  sanity,
+  framerMotion,
+  gsap,
+  express,
   forkify,
   bitc,
   freshCart,

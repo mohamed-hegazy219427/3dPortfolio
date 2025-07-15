@@ -15,6 +15,7 @@ const App = () => {
 	useEffect(() => {
 		$("canvas").on("webglcontextlost", (e) => {
 			e.preventDefault();
+		
 		});
 	});
 
