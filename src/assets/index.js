@@ -21,7 +21,7 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
-import bitc from "./company/Bitc.png";
+import bitc from "./company/bitc.png";
 import Route from "./company/Route.jpg";
 
 import bootstrap from "./tech/bootstrap.png";
