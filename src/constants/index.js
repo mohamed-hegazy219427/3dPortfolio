@@ -32,6 +32,7 @@ import {
   Ifuture,
   yummy,
   bitc,
+  forkify,
 } from "../assets/index.js";
 
 export const navLinks = [
@@ -226,6 +227,48 @@ const testimonials = [
 
 const projects = [
   {
+    name: "GPT-3",
+    description:
+      "This React landing page project demonstrates my CSS and React skills while introducing GPT-3. Through modern UI/UX design, I aim to engage visitors with seamless navigation and captivating animations. The integration of GPT-3 showcases its capabilities, highlighting my expertise in frontend development and design. With a focus on responsive design,      ",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+
+      {
+        name: "css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: gpt3,
+    live_demo: "https://mohamedhegazy-gpt3.netlify.app",
+    source_code_link: "https://github.com/MohamedHegazy2020/gpt3_msh.git",
+  },
+  {
+    name: "game-over",
+    description:
+      "A React website for game exploration could have a recommendation engine that suggests games based on user preferences. Users can filter and sort games based on various criteria and explore them in a fun and interactive way.    ",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+
+      {
+        name: "restapi",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: gameOver,
+    live_demo: "https://mohamedhegazy-game-over.netlify.app",
+    source_code_link: "https://github.com/MohamedHegazy2020/game-over.git",
+  },
+  {
     name: "e-commerce-freshcart",
     description:
       "A React e-commerce website that lets users shop online for fresh and quality products. Users can filter, sort, search, and view products, add them to cart, create orders, make payments, and view their profile.",
@@ -266,29 +309,11 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image:yummy,
+    image: yummy,
     source_code_link: "https://github.com/MohamedHegazy2020/Yummy.git",
     live_demo: "https://mohamedhegazy-yummy.netlify.app",
   },
-  {
-    name: "GPT-3",
-    description:
-      "This React landing page project demonstrates my CSS and React skills while introducing GPT-3. Through modern UI/UX design, I aim to engage visitors with seamless navigation and captivating animations. The integration of GPT-3 showcases its capabilities, highlighting my expertise in frontend development and design. With a focus on responsive design,      ",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
 
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image:gpt3,
-    live_demo: "https://mohamedhegazy-gpt3.netlify.app",
-    source_code_link: "https://github.com/MohamedHegazy2020/gpt3_msh.git",
-  },
   {
     name: "Fokir",
     description:
@@ -311,8 +336,34 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image:fokir,    live_demo: "https://mohamedhegazy-fokir.netlify.app",
+    image: fokir,
+    live_demo: "https://mohamedhegazy-fokir.netlify.app",
     source_code_link: "https://github.com/MohamedHegazy2020/Fokir.git",
+  },
+  {
+    name: "Forkify",
+    image: forkify,
+    description: "A web application built with the Model-View-Controller (MVC) architecture. The application allows users to search for recipes, view detailed information about recipes, save favorite recipes, and add new recipes to the list.",
+    tags: [
+      {
+        name: "html",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "restapi",
+        color: "green-text-gradient",
+      },
+      {
+        name: "sass",
+        color: "pink-text-gradient",
+      },
+    ],
+    source_code_link: "https://github.com/MohamedHegazy2020/Forkify.git",
+    live_demo: "https://mohamedhegazy-forkify.netlify.app",
   },
   {
     name: "weather-app",
@@ -341,35 +392,11 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image:weather,
+    image: weather,
     live_demo: "https://mohamedhegazy-weather-app.netlify.app",
     source_code_link: "https://github.com/MohamedHegazy2020/weather-app.git",
   },
-  {
-    name: "game-over",
-    description:
-      "A React website for game exploration could have a recommendation engine that suggests games based on user preferences. Users can filter and sort games based on various criteria and explore them in a fun and interactive way.    ",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
 
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "bootstrap",
-        color: "pink-text-gradient",
-      },
-
-      
-    ],
-    image:
-gameOver,    live_demo: "https://mohamedhegazy-game-over.netlify.app",
-    source_code_link: "https://github.com/MohamedHegazy2020/game-over.git",
-  },
   {
     name: "game-reviews",
     description:
@@ -396,7 +423,7 @@ gameOver,    live_demo: "https://mohamedhegazy-game-over.netlify.app",
         color: "pink-text-gradient",
       },
     ],
-    image:gameReviews,
+    image: gameReviews,
     live_demo: "https://mohamedhegazy-game-reviews.netlify.app/",
     source_code_link: "https://github.com/MohamedHegazy2020/game-reviews.git",
   },

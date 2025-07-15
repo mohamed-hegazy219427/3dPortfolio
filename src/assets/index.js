@@ -43,8 +43,9 @@ import gameReviews from "./projects/gameReviews.png";
 import gpt3 from "./projects/gpt3.png";
 import yummy from "./projects/yummy.png";
 import weather from "./projects/weather.png";
-
+import forkify from "./projects/forkify.png";
 export {
+  forkify,
   bitc,
   freshCart,
   gpt3,
