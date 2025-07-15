@@ -50,7 +50,7 @@ import prisma from "./tech/icons8-prisma-orm-50.png";
 import chackra from "./tech/chakra-ui-icon.png";
 import shadcn from "./tech/shadcn-ui-seeklogo.png";
 import daisy from "./tech/daisyui-seeklogo.png";
-import sanity from "./tech/sanity.png";
+import sanity from "./tech/Sanity.png";
 import framerMotion from "./tech/framer-motion.png";
 import gsap from "./tech/gsap-greensock.png";
 import express from "./tech/Express.png";
