@@ -31,6 +31,7 @@ import {
   gameReviews,
   Ifuture,
   yummy,
+  bitc,
 } from "../assets/index.js";
 
 export const navLinks = [
@@ -148,7 +149,7 @@ const experiences = [
     company_name: "Interactive Future",
     icon: Ifuture,
     iconBg: "#383E56",
-    date: "April 2024 - Now",
+    date: "April 2024 - January 2025",
     points: [
       "Collaborating with designers to translate visual designs into interactive web elements.",
       "Building user interfaces that are visually appealing and user-friendly.",
@@ -161,6 +162,21 @@ const experiences = [
       "Optimizing web performance to ensure fast loading times and smooth user experience.",
       "Troubleshooting and debugging issues to maintain the quality of the codebase.",
       "Integrating With Payload CMS and Other headless CMS in large scale projects.",
+    ],
+  },
+  {
+    title: "Full Stack Developer",
+    company_name: "Business Integration (BITC)",
+    icon: bitc,
+    iconBg: "#383E56",
+    date: "January 2025 - Present",
+    points: [
+      "Developed scalable full-stack web apps using MERN stack",
+      "Built reusable front-end components and REST APIs",
+      "Ensured code quality with testing and version control",
+      "Reduced deployment time by 30% through CI/CD automation",
+      "Enhanced performance of main app by 25% via frontend optimization",
+      
     ],
   },
 ];

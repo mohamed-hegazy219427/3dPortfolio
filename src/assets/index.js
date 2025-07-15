@@ -21,7 +21,7 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
-
+import bitc from "./company/Bitc.png";
 import Route from "./company/Route.jpg";
 
 import bootstrap from "./tech/bootstrap.png";
@@ -45,6 +45,7 @@ import yummy from "./projects/yummy.png";
 import weather from "./projects/weather.png";
 
 export {
+  bitc,
   freshCart,
   gpt3,
   fokir,
