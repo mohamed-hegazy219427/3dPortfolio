@@ -44,6 +44,7 @@ import {
   nest,
   prisma,
   sanity,
+  travel,
 } from "../assets/index.js";
 
 export const navLinks = [
@@ -286,7 +287,13 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    
+    image: travel,
+    live_demo: "https://mohamedhegazy-travel.netlify.app",
+    source_code_link: "https://github.com/mohamed-hegazy219427/travel_app.git",
+
+  },
+  {
+
   },
   {
     name: "GPT-3",

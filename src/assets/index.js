@@ -37,6 +37,7 @@ import azony from "./testimonials/azony.jpg";
 import ali from "./testimonials/ali.jpg";
 
 import freshCart from "./projects/freshCart.png";
+import travel from "./projects/travel_app.png";
 import fokir from "./projects/fokir.png";
 import gameOver from "./projects/gameOver.png";
 import gameReviews from "./projects/gameReviews.png";
@@ -57,6 +58,7 @@ import express from "./tech/Express.png";
 
 
 export {
+  travel,
   nest,
   nextjs,
   prisma,
