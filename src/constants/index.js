@@ -292,9 +292,7 @@ const projects = [
     source_code_link: "https://github.com/mohamed-hegazy219427/travel_app.git",
 
   },
-  {
-
-  },
+  
   {
     name: "GPT-3",
     description:
