@@ -148,7 +148,7 @@ const technologies = [
     name: "Sequelize",
     icon: sequelize,
   },
-  
+
   {
     name: "Prisma",
     icon: prisma,
@@ -268,6 +268,26 @@ const testimonials = [
 ];
 
 const projects = [
+  {
+    name: "Travel App",
+    description:
+      "A modern, responsive travel booking web application built with Next.js, Tailwind CSS, and TypeScript. This project demonstrates advanced front-end engineering skills, including component-driven development, performance optimization, and best practices for SEO.",
+    tags: [
+      {
+        name: "nextjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "typescript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    
+  },
   {
     name: "GPT-3",
     description:
