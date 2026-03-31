@@ -1,13 +1,21 @@
-"use client";
+import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
-import Experience from "@/components/sections/Experience";
 import Tech from "@/components/sections/Tech";
-import Works from "@/components/sections/Works";
-import Testimonials from "@/components/sections/Testimonials";
-import Contact from "@/components/sections/Contact";
-import StarsCanvas from "@/components/canvas/Stars";
+
+// Three.js star field — deferred so it doesn't block first paint
+const StarsCanvas = dynamic(() => import("@/components/canvas/Stars"), {
+  ssr: false,
+});
+
+// Below-fold sections — code-split to reduce initial bundle
+const Experience = dynamic(() => import("@/components/sections/Experience"));
+const Works = dynamic(() => import("@/components/sections/Works"));
+const Testimonials = dynamic(
+  () => import("@/components/sections/Testimonials"),
+);
+const Contact = dynamic(() => import("@/components/sections/Contact"));
 
 export default function Home() {
   return (

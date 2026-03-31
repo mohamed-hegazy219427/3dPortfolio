@@ -21,7 +21,10 @@ import {
   Linkedin,
   ArrowUpRight,
 } from "lucide-react";
-import EarthCanvas from "@/components/canvas/Earth";
+import dynamic from "next/dynamic";
+const EarthCanvas = dynamic(() => import("@/components/canvas/Earth"), {
+  ssr: false,
+});
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
