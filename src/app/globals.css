@@ -109,6 +109,9 @@ html {
   padding-bottom: 6rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  /* Scope layout reflows to the section — prevents GSAP ScrollTrigger
+     measurements from invalidating the whole document layout tree */
+  contain: layout style;
   @media (min-width: 640px) {
     padding-left: 4rem;
     padding-right: 4rem;
