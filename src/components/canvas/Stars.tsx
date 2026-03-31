@@ -61,9 +61,9 @@ function Scene({ colors, isDark }: SceneProps) {
 
   return (
     <group rotation={[0, 0, Math.PI / 5]}>
-      <StarLayer count={3500} radius={1.6} size={0.0011} color={colors.far}  opacity={farOp}  speedX={0.03}  speedY={0.025} />
-      <StarLayer count={1200} radius={1.2} size={0.0020} color={colors.mid}  opacity={midOp}  speedX={0.055} speedY={0.045} />
-      <StarLayer count={280}  radius={0.9} size={0.0042} color={colors.near} opacity={nearOp} speedX={0.085} speedY={0.065} />
+      <StarLayer count={2800} radius={1.6} size={0.0011} color={colors.far}  opacity={farOp}  speedX={0.03}  speedY={0.025} />
+      <StarLayer count={800}  radius={1.2} size={0.0020} color={colors.mid}  opacity={midOp}  speedX={0.055} speedY={0.045} />
+      <StarLayer count={300}  radius={0.9} size={0.0042} color={colors.near} opacity={nearOp} speedX={0.085} speedY={0.065} />
     </group>
   );
 }

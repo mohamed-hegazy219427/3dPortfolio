@@ -297,14 +297,7 @@ export default function Hero() {
         className="hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 group z-20 px-6 pb-2 pt-1 cursor-pointer select-none"
         aria-label="Scroll to next section"
         onClick={() => {
-          const target = document.getElementById("about-section");
-          if (target) {
-            gsap.to(window, {
-              scrollTo: target.offsetTop,
-              duration: 1.2,
-              ease: "power3.inOut",
-            });
-          }
+          document.getElementById("about-section")?.scrollIntoView({ behavior: "smooth" });
         }}
       >
         <span className="text-[10px] font-semibold text-base-content/40 uppercase tracking-[0.2em] group-hover:text-primary transition-colors duration-300">
