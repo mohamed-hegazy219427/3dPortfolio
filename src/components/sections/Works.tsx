@@ -5,10 +5,8 @@ import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { projects } from "@/data";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from "@/components/ui/card";
-import { Github, ExternalLink } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Link as AriaLink } from "react-aria-components";
+import { Github, ExternalLink, FolderOpen } from "lucide-react";
 
 export default function Works() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -29,7 +27,7 @@ export default function Works() {
       y: 40,
       opacity: 0,
       duration: 0.5,
-      stagger: 0.15,
+      stagger: 0.1,
       ease: "power3.out",
       scrollTrigger: {
         trigger: ".works-container",
@@ -39,74 +37,113 @@ export default function Works() {
   }, { scope: containerRef });
 
   return (
-    <section 
-      id="works" 
-      ref={containerRef} 
-      className="w-full py-24 bg-background max-w-7xl mx-auto px-6"
+    <section
+      id="works"
+      ref={containerRef}
+      className="w-full section-padding bg-base-100 max-w-7xl mx-auto"
     >
       <div className="flex flex-col items-center justify-center text-center works-header mb-16 gap-4">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+        <div className="badge badge-outline badge-accent badge-lg gap-2 font-medium mb-2">
+          <FolderOpen className="w-4 h-4" />
+          Portfolio
+        </div>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-base-content">
           Featured Projects
         </h2>
-        <p className="text-muted-foreground max-w-2xl text-base md:text-lg">
+        <p className="text-base-content/60 max-w-2xl text-base md:text-lg">
           A selection of projects that demonstrate my expertise in full-stack development and modern web practices.
         </p>
       </div>
 
       <div className="works-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10 w-full">
         {projects.map((project, index) => (
-          <Card key={index} className="works-card flex flex-col h-full overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm group hover:border-border transition-colors">
-            
-            <div className="relative w-full h-48 sm:h-56 overflow-hidden bg-muted">
+          <div
+            key={index}
+            className="works-card card bg-base-200/50 border border-base-300/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 group overflow-hidden"
+          >
+            {/* Image */}
+            <figure className="relative h-48 sm:h-56 overflow-hidden">
               <Image
                 src={project.image}
                 alt={project.name}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-            </div>
+              {/* Overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-base-300/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <CardHeader className="flex-none p-6 pb-2">
-              <CardTitle className="text-xl font-bold text-foreground capitalize">
-                {project.name.replace("-", " ")}
-              </CardTitle>
-            </CardHeader>
-            
-            <CardContent className="flex-1 p-6 pt-2 pb-4 flex flex-col gap-4">
-              <CardDescription className="text-sm text-muted-foreground line-clamp-4 leading-relaxed h-[80px]">
-                {project.description}
-              </CardDescription>
-
-              <div className="flex flex-wrap gap-2 mt-auto pt-4">
-                {project.tags.map((tag, tagIndex) => (
-                  <Badge 
-                    key={tagIndex} 
-                    variant="secondary" 
-                    className="bg-secondary/60 hover:bg-secondary text-secondary-foreground font-medium py-1 px-3 border border-border/40"
+              {/* Quick action buttons on hover */}
+              <div className="absolute bottom-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                {project.source_code_link && (
+                  <a
+                    href={project.source_code_link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-circle btn-sm bg-base-100/90 hover:bg-base-100 border-0 shadow-lg"
+                    aria-label={`View ${project.name} source code`}
                   >
-                    {tag.name}
-                  </Badge>
+                    <Github className="w-4 h-4" />
+                  </a>
+                )}
+                {project.live_demo && (
+                  <a
+                    href={project.live_demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-circle btn-sm bg-primary hover:bg-primary/90 text-primary-content border-0 shadow-lg"
+                    aria-label={`View ${project.name} live demo`}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
+            </figure>
+
+            {/* Content */}
+            <div className="card-body p-6">
+              <h3 className="card-title text-lg font-bold text-base-content capitalize">
+                {project.name.replace(/-/g, " ")}
+              </h3>
+
+              <p className="text-sm text-base-content/60 line-clamp-3 leading-relaxed">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mt-4">
+                {project.tags.map((tag, tagIndex) => (
+                  <span
+                    key={tagIndex}
+                    className="badge badge-ghost badge-sm py-2.5 px-3 font-medium text-base-content/70"
+                  >
+                    #{tag.name}
+                  </span>
                 ))}
               </div>
-            </CardContent>
 
-            <CardFooter className="p-6 pt-0 flex items-center gap-3">
-              {project.source_code_link && (
-                <Button variant="outline" size="sm" className="rounded-md font-semibold px-4 h-9 bg-transparent hover:bg-secondary" asChild>
-                  <a href={project.source_code_link} target="_blank" rel="noreferrer">
-                    <Github className="w-4 h-4 mr-2" /> Code
-                  </a>
-                </Button>
-              )}
-              {project.live_demo && (
-                <Button variant="default" size="sm" className="rounded-md font-semibold px-4 h-9" asChild>
-                  <a href={project.live_demo} target="_blank" rel="noreferrer">
-                    <ExternalLink className="w-4 h-4 mr-2" /> Demo
-                  </a>
-                </Button>
-              )}
-            </CardFooter>
-          </Card>
+              <div className="card-actions justify-start mt-4 pt-4 border-t border-base-300/50">
+                {project.source_code_link && (
+                  <AriaLink
+                    href={project.source_code_link}
+                    target="_blank"
+                    className="btn btn-ghost btn-sm gap-2 text-base-content/70 hover:text-base-content font-medium"
+                  >
+                    <Github className="w-4 h-4" />
+                    Code
+                  </AriaLink>
+                )}
+                {project.live_demo && (
+                  <AriaLink
+                    href={project.live_demo}
+                    target="_blank"
+                    className="btn btn-primary btn-sm gap-2 font-medium"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Demo
+                  </AriaLink>
+                )}
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </section>

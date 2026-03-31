@@ -8,7 +8,7 @@ import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <div className="relative z-0 bg-background text-foreground min-h-screen selection:bg-primary selection:text-primary-foreground max-w-[100vw] overflow-x-hidden">
+    <div className="relative z-0 bg-base-100 text-base-content min-h-screen max-w-[100vw] overflow-x-hidden">
       <Navbar />
       <Hero />
       <Tech />

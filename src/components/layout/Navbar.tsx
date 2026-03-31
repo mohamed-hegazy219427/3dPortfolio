@@ -1,35 +1,45 @@
 "use client";
 
-import { useState, useRef } from "react";
-import Image from "next/image";
-import { logo, menu, close } from "@/assets";
-import { navLinks } from "@/data";
+import { useState, useRef, useCallback } from "react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "@/lib/gsap";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
+import {
+  Button as AriaButton,
+  Link as AriaLink,
+  Dialog,
+  DialogTrigger,
+  Modal,
+  ModalOverlay,
+} from "react-aria-components";
 
 function ModeToggle() {
   const { theme, setTheme } = useTheme();
   return (
-    <Button 
-      variant="ghost" 
-      size="icon" 
-      onClick={() => setTheme(theme === "dark" || !theme ? "light" : "dark")}
-      className="rounded-full w-9 h-9"
+    <AriaButton
+      onPress={() => setTheme(theme === "dark" || !theme ? "light" : "dark")}
+      className="btn btn-ghost btn-circle btn-sm swap swap-rotate"
+      aria-label="Toggle theme"
     >
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">Toggle theme</span>
-    </Button>
+      <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+    </AriaButton>
   );
 }
 
+const navItems = [
+  { id: "about", title: "Home" },
+  { id: "tech", title: "Skills" },
+  { id: "experience", title: "Experience" },
+  { id: "works", title: "Projects" },
+  { id: "contact", title: "Contact" },
+];
+
 export default function Navbar() {
   const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
@@ -46,96 +56,103 @@ export default function Navbar() {
         if (!navRef.current) return;
         const scrolled = window.scrollY > 50;
         if (scrolled) {
-          navRef.current.classList.add("bg-background/80", "backdrop-blur-md", "border-b", "border-border/40");
+          navRef.current.classList.add("bg-base-100/80", "backdrop-blur-xl", "shadow-sm");
         } else {
-          navRef.current.classList.remove("bg-background/80", "backdrop-blur-md", "border-b", "border-border/40");
+          navRef.current.classList.remove("bg-base-100/80", "backdrop-blur-xl", "shadow-sm");
         }
       },
     });
   }, { scope: navRef });
 
-  const customLinks = [
-    { id: "about", title: "Home" },
-    { id: "tech", title: "Skills" },
-    { id: "experience", title: "Experience" },
-    { id: "works", title: "Projects" },
-    { id: "contact", title: "Contact" },
-  ];
+  const handleNavClick = useCallback((title: string) => {
+    setActive(title);
+    setMobileOpen(false);
+  }, []);
 
   return (
     <nav
       ref={navRef}
-      className="fixed top-0 z-50 w-full transition-all duration-300 py-4"
+      className="navbar fixed top-0 z-50 transition-all duration-300 px-6 lg:px-10"
     >
-      <div className="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
-        <a
+      <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
+        {/* Logo */}
+        <AriaLink
           href="#"
-          className="flex items-center gap-2"
-          onClick={() => {
+          className="text-base-content text-lg font-bold cursor-pointer tracking-tight hover:opacity-80 transition-opacity"
+          onPress={() => {
             setActive("");
             window.scrollTo(0, 0);
           }}
         >
-          <p className="text-foreground text-[18px] font-bold cursor-pointer tracking-tight">
-            Mohamed Hegazy
-          </p>
-        </a>
+          Mohamed Hegazy
+        </AriaLink>
 
         {/* Desktop nav */}
-        <div className="hidden sm:flex items-center gap-8">
-          <ul className="list-none flex flex-row gap-8">
-            {customLinks.map((link) => (
-              <li
-                key={link.id}
-                className={`${
-                  active === link.title ? "text-foreground font-semibold" : "text-muted-foreground font-medium"
-                } hover:text-foreground text-[14px] cursor-pointer transition-colors`}
-                onClick={() => setActive(link.title)}
-              >
-                <a href={`#${link.id}`}>{link.title}</a>
+        <div className="hidden sm:flex items-center gap-1">
+          <ul className="menu menu-horizontal px-1 gap-1">
+            {navItems.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={`#${link.id}`}
+                  className={`text-sm font-medium rounded-btn transition-all duration-200 ${
+                    active === link.title
+                      ? "text-primary font-semibold bg-primary/10"
+                      : "text-base-content/70 hover:text-base-content hover:bg-base-200/50"
+                  }`}
+                  onClick={() => handleNavClick(link.title)}
+                >
+                  {link.title}
+                </a>
               </li>
             ))}
           </ul>
+          <div className="divider divider-horizontal mx-1 h-6 self-center" />
           <ModeToggle />
         </div>
 
         {/* Mobile nav */}
-        <div className="sm:hidden flex flex-1 justify-end items-center gap-4">
+        <div className="sm:hidden flex items-center gap-2">
           <ModeToggle />
-          <button
-            onClick={() => setToggle(!toggle)}
-            className="cursor-pointer text-foreground"
-            aria-label="Toggle menu"
-          >
-            <Image
-              src={toggle ? close : menu}
-              alt="menu"
-              width={24}
-              height={24}
-              className="object-contain invert dark:invert-0"
-            />
-          </button>
-
-          {toggle && (
-            <div className="p-6 bg-popover/90 backdrop-blur-xl absolute top-16 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl border border-border shadow-md">
-              <ul className="list-none flex justify-end items-start flex-col gap-4">
-                {customLinks.map((link) => (
-                  <li
-                    key={link.id}
-                    className={`${
-                      active === link.title ? "text-foreground" : "text-muted-foreground"
-                    } font-medium cursor-pointer text-[14px] transition-colors`}
-                    onClick={() => {
-                      setToggle(false);
-                      setActive(link.title);
-                    }}
-                  >
-                    <a href={`#${link.id}`}>{link.title}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <DialogTrigger>
+            <AriaButton
+              onPress={() => setMobileOpen(!mobileOpen)}
+              className="btn btn-ghost btn-circle btn-sm"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </AriaButton>
+            {mobileOpen && (
+              <ModalOverlay
+                isDismissable
+                className="fixed inset-0 z-40 bg-base-300/40 backdrop-blur-sm animate-in fade-in"
+                onOpenChange={(isOpen) => setMobileOpen(isOpen)}
+              >
+                <Modal className="fixed top-16 right-4 left-4 z-50 bg-base-100 rounded-box shadow-2xl border border-base-300/50 p-6 animate-in slide-in-from-top-2">
+                  <Dialog className="outline-none">
+                    {() => (
+                      <ul className="menu gap-1">
+                        {navItems.map((link) => (
+                          <li key={link.id}>
+                            <a
+                              href={`#${link.id}`}
+                              className={`text-base font-medium rounded-btn ${
+                                active === link.title
+                                  ? "text-primary font-semibold bg-primary/10"
+                                  : "text-base-content/70"
+                              }`}
+                              onClick={() => handleNavClick(link.title)}
+                            >
+                              {link.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </Dialog>
+                </Modal>
+              </ModalOverlay>
+            )}
+          </DialogTrigger>
         </div>
       </div>
     </nav>
