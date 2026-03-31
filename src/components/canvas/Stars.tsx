@@ -75,9 +75,11 @@ export default function StarsCanvas() {
 
   const [colors, setColors] = useState({ far: "#e2e8f0", mid: "#c7d9ff", near: "#a5c8ff" });
 
-  // Re-read CSS vars whenever the theme changes
+  // Re-read CSS vars whenever the theme changes.
+  // rAF ensures data-theme is already written to <html> before getComputedStyle runs.
   useEffect(() => {
-    setColors(readStarColors());
+    const id = requestAnimationFrame(() => setColors(readStarColors()));
+    return () => cancelAnimationFrame(id);
   }, [resolvedTheme]);
 
   return (
