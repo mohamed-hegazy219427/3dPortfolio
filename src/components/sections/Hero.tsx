@@ -11,46 +11,48 @@ import { Github, Linkedin, Mail, Zap, ArrowDown } from "lucide-react";
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    
-    tl.fromTo(
-      ".hero-badge",
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }
-    )
-      .fromTo(
-        ".hero-title",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 },
-        "-=0.3"
-      )
-      .fromTo(
-        ".hero-desc",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
-        "-=0.3"
-      )
-      .fromTo(
-        ".hero-actions",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
-        "-=0.3"
-      )
-      .fromTo(
-        ".hero-stats",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
-        "-=0.3"
-      )
-      .fromTo(
-        ".hero-image",
-        { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" },
-        0.2
-      );
+  useGSAP(
+    () => {
+      const tl = gsap.timeline();
 
-  }, { scope: containerRef });
+      tl.fromTo(
+        ".hero-badge",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+      )
+        .fromTo(
+          ".hero-title",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1 },
+          "-=0.3",
+        )
+        .fromTo(
+          ".hero-desc",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          "-=0.3",
+        )
+        .fromTo(
+          ".hero-actions",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          "-=0.3",
+        )
+        .fromTo(
+          ".hero-stats",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          "-=0.3",
+        )
+        .fromTo(
+          ".hero-image",
+          { opacity: 0, scale: 0.8 },
+          { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" },
+          0.2,
+        );
+    },
+    { scope: containerRef },
+  );
 
   return (
     <section
@@ -156,7 +158,7 @@ export default function Hero() {
         {/* Right Content */}
         <div className="hero-image flex-1 flex justify-center lg:justify-end w-full relative">
           <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-[450px] md:h-[450px]">
-            <div className="absolute inset-0 bg-border rounded-full opacity-20 dark:opacity-40" />
+            <div className="absolute inset-0  rounded-full opacity-20 dark:opacity-40 " />
             <div className="absolute inset-4 bg-secondary rounded-full overflow-hidden flex items-center justify-center shadow-2xl">
               <Image
                 src={creator}
