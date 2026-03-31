@@ -1,0 +1,12 @@
+[build]
+  # Use npm install (not ci) so npm resolves the correct platform-specific
+  # native binaries for @tailwindcss/oxide on Netlify's Linux environment.
+  # (package-lock.json generated on Windows locks the wrong optional dep.)
+  command = "npm install && npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
