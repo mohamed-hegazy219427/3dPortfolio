@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  /* Portfolio palette */
+  --color-primary: #050816;
+  --color-secondary: #aaa6c3;
+  --color-tertiary: #151030;
+  --color-black-100: #100d25;
+  --color-black-200: #090325;
+  --color-white-100: #f3f3f3;
+
+  /* shadcn semantic tokens */
+  --color-background: #050816;
+  --color-foreground: #ffffff;
+  --color-card: #151030;
+  --color-card-foreground: #ffffff;
+  --color-muted: #100d25;
+  --color-muted-foreground: #aaa6c3;
+  --color-border: #1d1836;
+  --color-input: #1d1836;
+  --color-ring: #915eff;
+  --color-accent: #915eff;
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+
+  /* Custom box shadows */
+  --shadow-card: 0px 35px 120px -15px #211e35;
+
+  /* Custom breakpoints */
+  --breakpoint-xs: 450px;
+}
+
+/* Custom gradient utilities */
+@utility green-pink-gradient {
+  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+}
+
+@utility blue-pink-gradient {
+  background: linear-gradient(90.13deg, #3b82f6 1.9%, #ec4899 97.5%);
+}
+
+@utility orange-text-gradient {
+  background: linear-gradient(to right, #f97316, #eab308);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility blue-text-gradient {
+  background: linear-gradient(to right, #3b82f6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility green-text-gradient {
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility pink-text-gradient {
+  background: linear-gradient(to right, #ec4899, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility violet-gradient {
+  background: linear-gradient(to bottom, rgba(145, 94, 255, 0), rgba(145, 94, 255, 1));
+}
+
+@utility black-gradient {
+  background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+}
+
+@utility hero-gradient {
+  background: radial-gradient(at top center, #3d1a6e 0%, #050816 70%);
+}
+
+/* Canvas loader */
+.canvas-load {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #aaa6c3;
+  border-top-color: #915eff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+::-webkit-scrollbar-thumb {
+  background: #915eff;
+  border-radius: 3px;
+}
+
+/* Hash span anchor offset */
+.hash-span {
+  margin-top: -100px;
+  padding-bottom: 100px;
+  display: block;
+}
