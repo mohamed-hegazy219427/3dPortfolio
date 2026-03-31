@@ -111,7 +111,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={sectionRef}
-      className="w-full section-padding bg-base-200/30 max-w-7xl mx-auto"
+      className="w-full section-padding bg-base-100/70 backdrop-blur-sm max-w-7xl mx-auto relative"
     >
       <div className="flex flex-col items-center justify-center text-center exp-header mb-16 gap-4">
         <div className="exp-badge badge badge-outline badge-secondary badge-lg gap-2 font-medium mb-2">

@@ -21,6 +21,7 @@ import {
   Linkedin,
   ArrowUpRight,
 } from "lucide-react";
+import EarthCanvas from "@/components/canvas/Earth";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -223,12 +224,12 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="w-full section-padding bg-base-200/30 max-w-7xl mx-auto relative"
+      className="w-full section-padding bg-base-100/70 backdrop-blur-sm max-w-7xl mx-auto relative"
     >
       {/* Background decoration */}
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-info/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="flex flex-col items-center justify-center text-center contact-header mb-16 gap-4 relative z-10">
+      <div className="flex flex-col items-center justify-center text-center contact-header mb-8 gap-4 relative z-10">
         <div className="contact-badge-el badge badge-outline badge-info badge-lg gap-2 font-medium mb-2">
           <MessageSquare className="w-4 h-4" />
           Get In Touch
@@ -239,6 +240,19 @@ export default function Contact() {
         <p className="contact-subtitle text-base-content/60 max-w-2xl text-base md:text-lg">
           Ready to bring your next project to life? Let&apos;s discuss how my
           expertise in full-stack development can help achieve your goals.
+        </p>
+      </div>
+
+      {/* 3D Earth globe — contextual "reach out globally" visual */}
+      <div className="relative z-10 w-full flex flex-col items-center mb-10">
+        <div className="relative w-64 h-64 sm:w-80 sm:h-80">
+          {/* Glow ring behind the Earth */}
+          <div className="absolute inset-0 rounded-full bg-primary/10 blur-3xl scale-110 animate-pulse" />
+          <div className="absolute inset-4 rounded-full bg-secondary/8 blur-2xl" />
+          <EarthCanvas />
+        </div>
+        <p className="text-xs font-medium text-base-content/30 uppercase tracking-widest mt-3">
+          Available for remote work worldwide
         </p>
       </div>
 

@@ -113,7 +113,7 @@ export default function Tech() {
     <section
       id="tech"
       ref={containerRef}
-      className="w-full section-padding bg-base-100 max-w-7xl mx-auto relative"
+      className="w-full section-padding bg-base-200/60 backdrop-blur-sm max-w-7xl mx-auto relative"
     >
       {/* Background dot grid */}
       <div className="absolute inset-0 dot-grid opacity-50 pointer-events-none" />

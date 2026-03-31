@@ -18,6 +18,10 @@
   --color-base-100: oklch(99% 0 0);
   --color-base-200: oklch(96% 0.004 264);
   --color-base-300: oklch(91% 0.006 264);
+  /* Star field colors — consumed by Three.js via getComputedStyle */
+  --star-far:  #1e293b;
+  --star-mid:  #3730a3;
+  --star-near: #5b21b6;
 }
 
 [data-theme="dark"] {
@@ -27,6 +31,10 @@
   --color-base-100: oklch(13% 0.01 264);
   --color-base-200: oklch(17% 0.012 264);
   --color-base-300: oklch(22% 0.014 264);
+  /* Star field colors — consumed by Three.js via getComputedStyle */
+  --star-far:  #e2e8f0;
+  --star-mid:  #c7d9ff;
+  --star-near: #a5c8ff;
 }
 
 /* ─── Base ────────────────────────────────────────────────────────────────── */

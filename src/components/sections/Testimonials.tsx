@@ -114,7 +114,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       ref={sectionRef}
-      className="w-full section-padding bg-base-200/30 max-w-7xl mx-auto relative"
+      className="w-full section-padding bg-base-100/70 backdrop-blur-sm max-w-7xl mx-auto relative"
     >
       {/* Background decoration */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />

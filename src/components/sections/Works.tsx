@@ -66,7 +66,7 @@ export default function Works() {
     <section
       id="works"
       ref={containerRef}
-      className="w-full section-padding bg-base-100 max-w-7xl mx-auto relative"
+      className="w-full section-padding bg-base-200/60 backdrop-blur-sm max-w-7xl mx-auto relative"
     >
       {/* Background decoration */}
       <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />

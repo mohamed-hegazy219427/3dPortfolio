@@ -10,6 +10,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
   title: "Mohamed Hegazy | MERN Stack Developer",
   description:
     "Full-stack MERN developer specializing in React, Next.js, Node.js, and modern web technologies. Explore my portfolio, projects, and experience.",
@@ -58,9 +63,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <body
         className={`${poppins.className} bg-base-100 text-base-content antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="data-theme"

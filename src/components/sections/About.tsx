@@ -126,7 +126,7 @@ export default function About() {
   }, { scope: sectionRef });
 
   return (
-    <section id="about-section" className="w-full section-padding bg-base-200/30 max-w-7xl mx-auto">
+    <section id="about-section" className="w-full section-padding bg-base-100/70 backdrop-blur-sm max-w-7xl mx-auto">
       <div ref={sectionRef}>
         <div className="about-heading flex flex-col items-center justify-center text-center mb-16 gap-4">
           <div className="about-badge badge badge-outline badge-primary badge-lg gap-2 font-medium mb-2">

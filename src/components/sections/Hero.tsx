@@ -153,14 +153,17 @@ export default function Hero() {
     <section
       id="about"
       ref={containerRef}
-      className="relative w-full min-h-screen mx-auto flex flex-col justify-center overflow-hidden bg-base-100 pt-24"
+      className="relative w-full min-h-screen mx-auto flex flex-col justify-center overflow-hidden pt-24"
     >
-      {/* Background decorations */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-[20%] left-[5%] w-[200px] h-[200px] bg-accent/5 rounded-full blur-[80px] pointer-events-none" />
+      {/* Ambient gradient blobs */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/8 rounded-full blur-[130px] pointer-events-none z-1" />
+      <div className="absolute top-[15%] right-[8%] w-[280px] h-[280px] bg-secondary/6 rounded-full blur-[100px] pointer-events-none z-1" />
+      <div className="absolute bottom-[15%] left-[4%] w-[180px] h-[180px] bg-accent/6 rounded-full blur-[80px] pointer-events-none z-1" />
 
-      <div className="max-w-7xl mx-auto px-6 w-full flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20 z-10">
+      {/* Bottom blend — fades stars into the next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-base-100 via-base-100/60 to-transparent pointer-events-none z-2" />
+
+      <div className="max-w-7xl mx-auto px-6 w-full flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20 z-10 relative">
         {/* Left Content */}
         <div className="flex-[1.2] flex flex-col items-start gap-6 w-full">
           <div className="hero-badge badge badge-outline badge-lg gap-2 px-4 py-3 font-medium">
@@ -174,7 +177,7 @@ export default function Hero() {
                 Hi, I&apos;m
               </span>
               <span className="hero-title-line block ">
-                <span className="bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-transparent inline-block">
+                <span className="bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-transparent inline-block pb-2">
                   Mohamed Hegazy
                 </span>
               </span>
@@ -186,10 +189,14 @@ export default function Hero() {
 
           <p className="hero-desc text-base sm:text-lg text-base-content/60 font-medium max-w-xl leading-relaxed">
             I build{" "}
-            <span className="text-base-content font-semibold">fast, scalable, and beautiful</span>{" "}
-            web &amp; mobile applications using the MERN stack, React Native, and modern tooling.
+            <span className="text-base-content font-semibold">
+              fast, scalable, and beautiful
+            </span>{" "}
+            web &amp; mobile applications using the MERN stack, React Native,
+            and modern tooling.
             <span className="text-sm sm:text-base font-normal mt-2 block opacity-80">
-              From pixel-perfect UIs to robust REST APIs — I ship production-ready products that users love.
+              From pixel-perfect UIs to robust REST APIs — I ship
+              production-ready products that users love.
             </span>
           </p>
 
