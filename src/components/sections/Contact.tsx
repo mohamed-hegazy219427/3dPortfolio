@@ -11,7 +11,7 @@ import {
   Button as AriaButton,
   Form,
 } from "react-aria-components";
-import { Mail, Phone, MapPin, Send, MessageSquare, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, Github, Linkedin, ArrowUpRight } from "lucide-react";
 
 interface FormState {
   name: string;
@@ -27,39 +27,87 @@ export default function Contact() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   useGSAP(() => {
-    gsap.from(".contact-header", {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out",
+    // Header entrance
+    const headerTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".contact-header",
         start: "top 85%",
       },
     });
+    headerTl
+      .fromTo(".contact-badge-el", { opacity: 0, y: 20, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5 })
+      .fromTo(".contact-title", { opacity: 0, y: 30, clipPath: "inset(100% 0% 0% 0%)" }, { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)", duration: 0.6 }, "-=0.3")
+      .fromTo(".contact-subtitle", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.3");
 
-    gsap.from(".contact-info-card", {
-      x: -40,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.15,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".contact-container",
-        start: "top 80%",
-      },
+    // Info cards slide in from left
+    gsap.utils.toArray<HTMLElement>(".contact-info-card").forEach((card, i) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, x: -40, scale: 0.95 },
+        {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          duration: 0.6,
+          delay: i * 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-container",
+            start: "top 80%",
+          },
+        },
+      );
     });
 
-    gsap.from(".contact-form-card", {
-      x: 40,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".contact-container",
-        start: "top 80%",
+    // Form card slide in from right
+    gsap.fromTo(
+      ".contact-form-card",
+      { opacity: 0, x: 40, scale: 0.95 },
+      {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        duration: 0.7,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".contact-container",
+          start: "top 80%",
+        },
       },
-    });
+    );
+
+    // Form fields stagger
+    gsap.fromTo(
+      ".contact-field",
+      { opacity: 0, y: 15 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+        stagger: 0.08,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".contact-form-card",
+          start: "top 78%",
+        },
+      },
+    );
+
+    // Footer entrance
+    gsap.fromTo(
+      ".contact-footer",
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".contact-footer",
+          start: "top 95%",
+        },
+      },
+    );
   }, { scope: sectionRef });
 
   const handleChange = (
@@ -101,19 +149,19 @@ export default function Contact() {
       title: "Email",
       value: "mohamedhegazy19427@gmail.com",
       href: "mailto:mohamedhegazy19427@gmail.com",
-      color: "text-primary",
+      gradient: "from-blue-500 to-cyan-400",
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
       value: "+20 100 000 0000",
-      color: "text-secondary",
+      gradient: "from-purple-500 to-pink-400",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Location",
       value: "Available for Remote Work | Egypt",
-      color: "text-accent",
+      gradient: "from-amber-500 to-orange-400",
     },
   ];
 
@@ -123,15 +171,18 @@ export default function Contact() {
       ref={sectionRef}
       className="w-full section-padding bg-base-200/30 max-w-7xl mx-auto relative"
     >
-      <div className="flex flex-col items-center justify-center text-center contact-header mb-16 gap-4">
-        <div className="badge badge-outline badge-info badge-lg gap-2 font-medium mb-2">
+      {/* Background decoration */}
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-info/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="flex flex-col items-center justify-center text-center contact-header mb-16 gap-4 relative z-10">
+        <div className="contact-badge-el badge badge-outline badge-info badge-lg gap-2 font-medium mb-2">
           <MessageSquare className="w-4 h-4" />
           Get In Touch
         </div>
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-base-content">
+        <h2 className="contact-title text-3xl md:text-5xl font-bold tracking-tight text-base-content">
           Let&apos;s Work Together
         </h2>
-        <p className="text-base-content/60 max-w-2xl text-base md:text-lg">
+        <p className="contact-subtitle text-base-content/60 max-w-2xl text-base md:text-lg">
           Ready to bring your next project to life? Let&apos;s discuss how my expertise in full-stack development can help achieve your goals.
         </p>
       </div>
@@ -142,10 +193,10 @@ export default function Contact() {
           {contactInfo.map((info, idx) => (
             <div
               key={idx}
-              className="contact-info-card card bg-base-100 border border-base-300/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 group cursor-default"
+              className="contact-info-card card bg-base-100 border border-base-300/50 hover:border-primary/20 hover:shadow-lg transition-all duration-300 group cursor-default card-hover-lift"
             >
               <div className="card-body p-5 flex-row items-center gap-4">
-                <div className={`w-12 h-12 rounded-xl bg-base-200 flex items-center justify-center ${info.color} group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${info.gradient} flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                   {info.icon}
                 </div>
                 <div className="flex flex-col gap-0.5">
@@ -168,7 +219,7 @@ export default function Contact() {
           ))}
 
           {/* Social links card */}
-          <div className="card bg-base-100 border border-base-300/50 mt-2">
+          <div className="contact-info-card card bg-base-100 border border-base-300/50 mt-2">
             <div className="card-body p-5">
               <h4 className="font-semibold text-base-content text-sm uppercase tracking-wider mb-3">
                 Follow Me
@@ -215,7 +266,7 @@ export default function Contact() {
                       value={form.name}
                       onChange={handleChange}
                       placeholder="John Doe"
-                      className="input input-bordered w-full bg-base-200/50 focus:input-primary transition-all duration-200"
+                      className="contact-field input input-bordered w-full bg-base-200/50 focus:input-primary transition-all duration-200"
                     />
                   </TextField>
 
@@ -229,7 +280,7 @@ export default function Contact() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="john@example.com"
-                      className="input input-bordered w-full bg-base-200/50 focus:input-primary transition-all duration-200"
+                      className="contact-field input input-bordered w-full bg-base-200/50 focus:input-primary transition-all duration-200"
                     />
                   </TextField>
                 </div>
@@ -243,7 +294,7 @@ export default function Contact() {
                     value={form.subject}
                     onChange={handleChange}
                     placeholder="Project Inquiry"
-                    className="input input-bordered w-full bg-base-200/50 focus:input-primary transition-all duration-200"
+                    className="contact-field input input-bordered w-full bg-base-200/50 focus:input-primary transition-all duration-200"
                   />
                 </TextField>
 
@@ -257,7 +308,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Hi, I'd like to talk about..."
                     rows={5}
-                    className="textarea textarea-bordered w-full bg-base-200/50 focus:textarea-primary resize-none transition-all duration-200"
+                    className="contact-field textarea textarea-bordered w-full bg-base-200/50 focus:textarea-primary resize-none transition-all duration-200"
                   />
                 </TextField>
 
@@ -277,13 +328,14 @@ export default function Contact() {
                 <AriaButton
                   type="submit"
                   isDisabled={loading}
-                  className="btn btn-primary w-full gap-2 mt-2 font-semibold text-base shadow-lg hover:shadow-primary/25 transition-all duration-300"
+                  className="btn btn-primary w-full gap-2 mt-2 font-semibold text-base shadow-lg hover:shadow-primary/25 transition-all duration-300 group"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                   {loading ? (
                     <span className="loading loading-spinner loading-sm" />
                   ) : null}
                   {loading ? "Sending..." : "Send Message"}
+                  <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -ml-2 group-hover:ml-0 transition-all duration-300" />
                 </AriaButton>
               </Form>
             </div>
@@ -292,7 +344,7 @@ export default function Contact() {
       </div>
 
       {/* Footer */}
-      <footer className="w-full py-8 text-center flex flex-col items-center justify-center border-t border-base-300/30 gap-3">
+      <footer className="contact-footer w-full py-8 text-center flex flex-col items-center justify-center border-t border-base-300/30 gap-3">
         <h4 className="text-lg font-bold text-base-content">Mohamed Hegazy</h4>
         <p className="text-sm font-medium text-base-content/50">Software Engineer | MERN Developer</p>
         <p className="text-xs text-base-content/30 mt-4">

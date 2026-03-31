@@ -10,27 +10,91 @@ export default function Experience() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.from(".exp-header", {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out",
+    // Header entrance
+    const headerTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".exp-header",
         start: "top 85%",
       },
     });
+    headerTl
+      .fromTo(".exp-badge", { opacity: 0, y: 20, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5 })
+      .fromTo(".exp-title", { opacity: 0, y: 30, clipPath: "inset(100% 0% 0% 0%)" }, { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)", duration: 0.6 }, "-=0.3")
+      .fromTo(".exp-subtitle", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.3");
 
-    gsap.from(".exp-card", {
-      y: 40,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.15,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".exp-container",
-        start: "top 80%",
+    // Timeline line drawing animation
+    gsap.fromTo(
+      ".timeline-line-fill",
+      { scaleY: 0 },
+      {
+        scaleY: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".exp-container",
+          start: "top 80%",
+          end: "bottom 60%",
+          scrub: 1,
+        },
       },
+    );
+
+    // Cards stagger from alternating sides
+    gsap.utils.toArray<HTMLElement>(".exp-card").forEach((card, i) => {
+      const xDir = i % 2 === 0 ? -40 : 40;
+      gsap.fromTo(
+        card,
+        { opacity: 0, x: xDir, y: 20, scale: 0.95 },
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          scale: 1,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 88%",
+          },
+        },
+      );
+    });
+
+    // Timeline dots pop in
+    gsap.utils.toArray<HTMLElement>(".timeline-dot").forEach((dot) => {
+      gsap.fromTo(
+        dot,
+        { scale: 0, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.4,
+          ease: "back.out(2)",
+          scrollTrigger: {
+            trigger: dot,
+            start: "top 88%",
+          },
+        },
+      );
+    });
+
+    // Badge stagger inside each card
+    gsap.utils.toArray<HTMLElement>(".exp-card").forEach((card) => {
+      const badges = card.querySelectorAll(".exp-badge-tag");
+      gsap.fromTo(
+        badges,
+        { opacity: 0, scale: 0.8 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.3,
+          stagger: 0.06,
+          ease: "back.out(1.5)",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+          },
+        },
+      );
     });
   }, { scope: sectionRef });
 
@@ -47,30 +111,32 @@ export default function Experience() {
       className="w-full section-padding bg-base-200/30 max-w-7xl mx-auto"
     >
       <div className="flex flex-col items-center justify-center text-center exp-header mb-16 gap-4">
-        <div className="badge badge-outline badge-secondary badge-lg gap-2 font-medium mb-2">
+        <div className="exp-badge badge badge-outline badge-secondary badge-lg gap-2 font-medium mb-2">
           <Briefcase className="w-4 h-4" />
           Career
         </div>
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-base-content">
+        <h2 className="exp-title text-3xl md:text-5xl font-bold tracking-tight text-base-content">
           Professional Experience
         </h2>
-        <p className="text-base-content/60 max-w-2xl text-base md:text-lg">
+        <p className="exp-subtitle text-base-content/60 max-w-2xl text-base md:text-lg">
           Over 2 years of experience building scalable web applications and developing impactful solutions.
         </p>
       </div>
 
       <div className="exp-container flex flex-col gap-6 w-full max-w-4xl mx-auto relative">
-        {/* Timeline line */}
-        <div className="absolute left-6 top-0 bottom-0 w-px bg-base-300/60 hidden md:block" />
+        {/* Timeline line with fill */}
+        <div className="absolute left-6 top-0 bottom-0 w-px bg-base-300/30 hidden md:block">
+          <div className="timeline-line-fill absolute top-0 left-0 w-full bg-linear-to-b from-primary via-secondary to-accent origin-top" style={{ height: "100%" }} />
+        </div>
 
         {experiences.map((exp, index) => {
           const badges = badgeMap[index] || [];
           return (
             <div key={index} className="exp-card relative md:pl-16">
               {/* Timeline dot */}
-              <div className="absolute left-4 top-8 w-5 h-5 rounded-full bg-primary border-4 border-base-100 z-10 hidden md:block" />
+              <div className="timeline-dot absolute left-4 top-8 w-5 h-5 rounded-full bg-linear-to-br from-primary to-secondary border-4 border-base-100 z-10 hidden md:block shadow-lg shadow-primary/20" />
 
-              <div className="card bg-base-100 border border-base-300/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group">
+              <div className="card bg-base-100 border border-base-300/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 group card-hover-lift">
                 <div className="card-body p-6 sm:p-8">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4 mb-4">
                     {/* Left Side: Role and Company */}
@@ -79,7 +145,7 @@ export default function Experience() {
                         <Briefcase className="w-5 h-5 text-base-content/50 group-hover:text-primary transition-colors duration-300" />
                         {exp.title}
                       </h3>
-                      <p className="text-lg font-medium text-primary/80">
+                      <p className="text-lg font-medium gradient-text">
                         {exp.company_name}
                       </p>
                     </div>
@@ -111,7 +177,7 @@ export default function Experience() {
                     {badges.map((txt, idx) => (
                       <span
                         key={idx}
-                        className="badge badge-outline badge-sm py-3 px-3 font-medium text-base-content/70 hover:badge-primary hover:text-primary-content transition-all duration-200"
+                        className="exp-badge-tag badge badge-outline badge-sm py-3 px-3 font-medium text-base-content/70 hover:badge-primary hover:text-primary-content transition-all duration-200"
                       >
                         {txt}
                       </span>

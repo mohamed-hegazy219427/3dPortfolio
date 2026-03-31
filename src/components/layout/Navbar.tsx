@@ -34,6 +34,7 @@ const navItems = [
   { id: "tech", title: "Skills" },
   { id: "experience", title: "Experience" },
   { id: "works", title: "Projects" },
+  { id: "testimonials", title: "Reviews" },
   { id: "contact", title: "Contact" },
 ];
 
@@ -43,12 +44,19 @@ export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    gsap.from(navRef.current, {
-      y: -50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-    });
+    // Nav entrance
+    gsap.fromTo(
+      navRef.current,
+      { y: -60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", delay: 0.2 },
+    );
+
+    // Nav items stagger
+    gsap.fromTo(
+      ".nav-item",
+      { opacity: 0, y: -15 },
+      { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, delay: 0.5, ease: "power2.out" },
+    );
 
     ScrollTrigger.create({
       start: "top -80",
@@ -84,14 +92,16 @@ export default function Navbar() {
             window.scrollTo(0, 0);
           }}
         >
-          Mohamed Hegazy
+          <span className="gradient-text">MH</span>
+          <span className="text-base-content/40 font-normal ml-1">|</span>
+          <span className="text-sm font-medium text-base-content/60 ml-1">Portfolio</span>
         </AriaLink>
 
         {/* Desktop nav */}
         <div className="hidden sm:flex items-center gap-1">
           <ul className="menu menu-horizontal px-1 gap-1">
             {navItems.map((link) => (
-              <li key={link.id}>
+              <li key={link.id} className="nav-item">
                 <a
                   href={`#${link.id}`}
                   className={`text-sm font-medium rounded-btn transition-all duration-200 ${
