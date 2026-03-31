@@ -6,7 +6,7 @@ import type { StaticImageData } from "next/image";
 import { services } from "@/data";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
-import { User, Sparkles } from "lucide-react";
+import { User } from "lucide-react";
 
 interface ServiceCardProps {
   title: string;
@@ -134,19 +134,19 @@ export default function About() {
             About Me
           </div>
           <h2 className="about-title text-3xl md:text-5xl font-bold tracking-tight text-base-content">
-            Overview
+            Who I Am
           </h2>
         </div>
 
         <div className="about-description card bg-base-100 border border-base-300/50 p-8 sm:p-10 max-w-3xl mx-auto mb-16">
           <p className="text-base-content/70 text-[16px] leading-[1.8] text-center">
-            I am a <span className="font-semibold text-base-content">MERN stack developer</span> with a passion for web development. I create
-            attractive and user-friendly web pages using HTML, CSS,
-            JavaScript, and frameworks such as <span className="text-primary font-medium">React</span>, <span className="text-primary font-medium">Next.js</span>, and TailwindCSS.
-            I implement complex functionality using TypeScript and ES6 features.
-            On the back end, I design and consume RESTful APIs using <span className="text-primary font-medium">Express</span>,{" "}
-            <span className="text-primary font-medium">NestJS</span>, and Node.js with relational and non-relational
-            databases. I follow best practices to ensure quality and maintainability.
+            I&apos;m a <span className="font-semibold text-base-content">Full-Stack &amp; Mobile Developer</span> with 2+ years of hands-on experience shipping production applications across web and mobile.
+            I build with <span className="text-primary font-medium">React</span>, <span className="text-primary font-medium">React Native</span>, <span className="text-primary font-medium">Next.js</span>, and TypeScript on the frontend,
+            and architect scalable APIs with <span className="text-primary font-medium">Node.js</span>, <span className="text-primary font-medium">NestJS</span>, and <span className="text-primary font-medium">Express</span> on the backend —
+            backed by MongoDB, PostgreSQL, and Prisma.
+            <span className="block mt-3">
+              I care deeply about performance, clean code, and developer experience. Whether it&apos;s a pixel-perfect landing page, a complex dashboard, or a cross-platform mobile app — I turn ideas into fast, maintainable, and scalable products.
+            </span>
           </p>
         </div>
 

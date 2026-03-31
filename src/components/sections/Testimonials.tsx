@@ -9,7 +9,7 @@ import { testimonials as localTestimonials } from "@/data";
 import type { Testimonial } from "@/types";
 import { MessageSquareQuote, Star, Quote } from "lucide-react";
 
-function TestimonialCard({ item, index }: { item: Testimonial; index: number }) {
+function TestimonialCard({ item }: { item: Testimonial }) {
   const isStaticImage = typeof item.image !== "string";
 
   return (
@@ -23,7 +23,7 @@ function TestimonialCard({ item, index }: { item: Testimonial; index: number }) 
         </div>
 
         {/* Testimonial text */}
-        <p className="text-base-content/70 text-[15px] leading-relaxed flex-grow mb-6">
+        <p className="text-base-content/70 text-[15px] leading-relaxed grow mb-6">
           {item.testimonial}
         </p>
 
@@ -134,7 +134,7 @@ export default function Testimonials() {
 
       <div className="testimonials-container flex flex-wrap gap-7 justify-center relative z-10">
         {localTestimonials.map((testimonial, index) => (
-          <TestimonialCard key={index} item={testimonial} index={index} />
+          <TestimonialCard key={index} item={testimonial} />
         ))}
       </div>
     </section>

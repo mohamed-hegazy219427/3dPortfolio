@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { experiences } from "@/data";
@@ -102,6 +104,7 @@ export default function Experience() {
     ["React", "Express.js", "MongoDB", "Node.js"],
     ["React", "Payload CMS", "Front-end", "Performance"],
     ["MERN Stack", "REST APIs", "CI/CD", "Optimization"],
+    ["Next.js", "NestJS", "TypeScript", "Prisma", "RBAC"],
   ];
 
   return (
@@ -140,14 +143,29 @@ export default function Experience() {
                 <div className="card-body p-6 sm:p-8">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4 mb-4">
                     {/* Left Side: Role and Company */}
-                    <div className="flex flex-col gap-2">
-                      <h3 className="card-title text-xl font-bold flex items-center gap-2 text-base-content">
-                        <Briefcase className="w-5 h-5 text-base-content/50 group-hover:text-primary transition-colors duration-300" />
-                        {exp.title}
-                      </h3>
-                      <p className="text-lg font-medium gradient-text">
-                        {exp.company_name}
-                      </p>
+                    <div className="flex items-start gap-4">
+                      {/* Company icon */}
+                      <div
+                        className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-md border border-base-300/40 overflow-hidden"
+                        style={{ background: exp.iconBg }}
+                      >
+                        <Image
+                          src={exp.icon as StaticImageData}
+                          alt={exp.company_name}
+                          width={36}
+                          height={36}
+                          className="object-contain"
+                        />
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <h3 className="card-title text-xl font-bold flex items-center gap-2 text-base-content">
+                          <Briefcase className="w-5 h-5 text-base-content/50 group-hover:text-primary transition-colors duration-300" />
+                          {exp.title}
+                        </h3>
+                        <p className="text-base font-semibold bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent inline-block">
+                          {exp.company_name}
+                        </p>
+                      </div>
                     </div>
 
                     {/* Right Side: Date and Location */}

@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { creator } from "@/assets";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { Link as AriaLink } from "react-aria-components";
-import { Github, Linkedin, Mail, Zap, ArrowDown, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, Zap, Sparkles } from "lucide-react";
+
+const GITHUB_AVATAR = "https://avatars.githubusercontent.com/u/48334725";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,9 +29,12 @@ export default function Hero() {
           {
             opacity: 1,
             y: 0,
-            clipPath: "inset(0% 0% 0% 0%)",
+            clipPath: "inset(0% 0% -20% 0%)",
             duration: 0.8,
             stagger: 0.15,
+            onComplete: () => {
+              gsap.set(".hero-title-line", { clearProps: "clipPath" });
+            },
           },
           "-=0.3",
         )
@@ -100,7 +104,7 @@ export default function Hero() {
         .fromTo(
           ".hero-scroll",
           { opacity: 0, y: -10 },
-          { opacity: 0.6, y: 0, duration: 0.5 },
+          { opacity: 1, y: 0, duration: 0.5 },
           "-=0.2",
         );
 
@@ -118,9 +122,9 @@ export default function Hero() {
 
       // Stat counter animation
       const statValues = [
-        { target: 10, suffix: "+" },
+        { target: 15, suffix: "+" },
         { target: 2, suffix: "+" },
-        { target: 100, suffix: "%" },
+        { target: 30, suffix: "%" },
       ];
       document
         .querySelectorAll<HTMLSpanElement>(".hero-stat-value")
@@ -167,22 +171,25 @@ export default function Hero() {
           <div className="flex flex-col gap-2">
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-base-content leading-[1.1]">
               <span className="hero-title-line block overflow-hidden">
-                Hello, I&apos;m
+                Hi, I&apos;m
               </span>
-              <span className="hero-title-line block overflow-hidden">
-                <span className="text-primary">Mohamed Hegazy</span>
+              <span className="hero-title-line block ">
+                <span className="bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-transparent inline-block">
+                  Mohamed Hegazy
+                </span>
+              </span>
+              <span className="hero-title-line block overflow-hidden text-2xl sm:text-3xl lg:text-4xl font-semibold text-base-content/70 mt-1">
+                Full-Stack &amp; Mobile Developer
               </span>
             </h1>
           </div>
 
-          <p className="hero-desc text-lg sm:text-xl text-base-content/60 font-medium max-w-xl leading-relaxed">
-            MERN Stack Developer crafting digital experiences with{" "}
-            <span className="text-base-content font-semibold">2+ years</span> of
-            expertise.
-            <br className="hidden sm:block" />
-            <span className="text-base sm:text-lg font-normal mt-2 block opacity-80">
-              Specializing in full-stack development, modern web practices, and
-              scalable solutions that drive business growth.
+          <p className="hero-desc text-base sm:text-lg text-base-content/60 font-medium max-w-xl leading-relaxed">
+            I build{" "}
+            <span className="text-base-content font-semibold">fast, scalable, and beautiful</span>{" "}
+            web &amp; mobile applications using the MERN stack, React Native, and modern tooling.
+            <span className="text-sm sm:text-base font-normal mt-2 block opacity-80">
+              From pixel-perfect UIs to robust REST APIs — I ship production-ready products that users love.
             </span>
           </p>
 
@@ -235,12 +242,12 @@ export default function Hero() {
 
           <div className="flex items-center gap-10 mt-10 pt-10 border-t border-base-300/50 w-full">
             {[
-              { value: "10+", label: "Projects" },
+              { value: "15+", label: "Projects Shipped" },
               { value: "2+", label: "Years Exp" },
-              { value: "100%", label: "Client Satisfaction" },
+              { value: "30%", label: "Perf Boost" },
             ].map((stat) => (
               <div key={stat.label} className="hero-stat flex flex-col gap-1">
-                <span className="hero-stat-value text-3xl font-bold text-base-content">
+                <span className="hero-stat-value text-3xl font-bold bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent inline-block">
                   {stat.value}
                 </span>
                 <span className="text-sm font-medium text-base-content/50">
@@ -257,11 +264,12 @@ export default function Hero() {
             <div className="hero-avatar-glow absolute inset-0 rounded-full bg-linear-to-br from-primary/20 via-secondary/20 to-accent/20 blur-2xl animate-float" />
             <div className="absolute inset-4 bg-base-200 rounded-full overflow-hidden flex items-center justify-center shadow-2xl ring-1 ring-base-300/50">
               <Image
-                src={creator}
+                src={GITHUB_AVATAR}
                 alt="Mohamed Hegazy"
                 fill
                 className="object-cover"
                 priority
+                unoptimized
               />
             </div>
             {/* Orbiting ring decoration */}
@@ -278,17 +286,28 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hero-scroll absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hover:opacity-100 transition-opacity">
-        <span className="text-[10px] font-medium text-base-content/50 uppercase tracking-widest">
+      <button
+        type="button"
+        className="hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 group z-20 px-6 pb-2 pt-1 cursor-pointer select-none"
+        aria-label="Scroll to next section"
+        onClick={() => {
+          const target = document.getElementById("about-section");
+          if (target) {
+            gsap.to(window, {
+              scrollTo: target.offsetTop,
+              duration: 1.2,
+              ease: "power3.inOut",
+            });
+          }
+        }}
+      >
+        <span className="text-[10px] font-semibold text-base-content/40 uppercase tracking-[0.2em] group-hover:text-primary transition-colors duration-300">
           Scroll to explore
         </span>
-        <a
-          href="#tech"
-          className="w-8 h-8 rounded-full border border-base-300 flex items-center justify-center text-base-content/70 hover:border-primary hover:text-primary animate-bounce transition-colors"
-        >
-          <ArrowDown size={14} />
-        </a>
-      </div>
+        <div className="w-6 h-10 rounded-full border-2 border-base-content/25 group-hover:border-primary transition-colors duration-300 flex items-start justify-center pt-1.5 group-hover:shadow-[0_0_12px] group-hover:shadow-primary/30">
+          <div className="w-1 h-2.5 rounded-full bg-primary animate-[scrollDot_1.6s_ease-in-out_infinite]" />
+        </div>
+      </button>
     </section>
   );
 }

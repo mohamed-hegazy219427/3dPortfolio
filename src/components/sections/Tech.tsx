@@ -18,7 +18,7 @@ const skillCategories = [
     icon: <Globe className="w-5 h-5" />,
     gradient: "from-purple-500 to-pink-400",
     badgeColor: "badge-secondary",
-    skills: ["React JS", "Next JS", "Redux Toolkit", "GSAP", "Framer Motion", "Three JS"],
+    skills: ["React JS", "React Native", "Next JS", "Redux Toolkit", "GSAP", "Framer Motion", "Three JS"],
   },
   {
     title: "Web Frameworks & UI",
@@ -32,7 +32,7 @@ const skillCategories = [
     icon: <Database className="w-5 h-5" />,
     gradient: "from-emerald-500 to-teal-400",
     badgeColor: "badge-info",
-    skills: ["Node JS", "Express JS", "Nest JS", "MongoDB", "Mongoose", "Sequelize", "Prisma", "Payload", "Sanity"],
+    skills: ["Node JS", "Express JS", "Nest JS", "MongoDB", "Mongoose", "PostgreSQL", "TypeORM", "Sequelize", "Prisma", "Payload", "Sanity"],
   },
   {
     title: "DevOps & Tools",
