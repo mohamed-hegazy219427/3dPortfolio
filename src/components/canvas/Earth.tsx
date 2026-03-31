@@ -6,7 +6,7 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "./CanvasLoader";
 
 function EarthModel() {
-  const earth = useGLTF("./planet/scene.gltf");
+  const earth = useGLTF("/planet/scene.gltf");
   return (
     <primitive
       object={earth.scene}

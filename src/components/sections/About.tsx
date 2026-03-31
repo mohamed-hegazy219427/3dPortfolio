@@ -6,6 +6,7 @@ import type { StaticImageData } from "next/image";
 import SectionWrapper from "@/components/SectionWrapper";
 import { services } from "@/data";
 import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "@/lib/gsap";
 
 interface ServiceCardProps {
@@ -48,7 +49,7 @@ function ServiceCard({ title, icon, index }: ServiceCardProps) {
     >
       <div
         ref={cardRef}
-        className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
+        className="w-full green-pink-gradient p-px rounded-[20px] shadow-card"
         style={{ transformStyle: "preserve-3d", perspective: "500px" }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -73,49 +74,45 @@ function ServiceCard({ title, icon, index }: ServiceCardProps) {
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".about-heading", {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".about-heading",
-          start: "top 85%",
-        },
-      });
+  useGSAP(() => {
+    gsap.from(".about-heading", {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".about-heading",
+        start: "top 85%",
+      },
+    });
 
-      gsap.from(".about-description", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        delay: 0.2,
+    gsap.from(".about-description", {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".about-description",
+        start: "top 85%",
+      },
+    });
+
+    gsap.utils.toArray<HTMLElement>(".service-card").forEach((card, i) => {
+      gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        delay: i * 0.15,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: ".about-description",
-          start: "top 85%",
+          trigger: card,
+          start: "top 90%",
         },
       });
-
-      gsap.utils.toArray<HTMLElement>(".service-card").forEach((card, i) => {
-        gsap.to(card, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          delay: i * 0.15,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 90%",
-          },
-        });
-        gsap.set(card, { y: 60 });
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+      gsap.set(card, { y: 60 });
+    });
+  }, { scope: sectionRef });
 
   return (
     <SectionWrapper id="about">

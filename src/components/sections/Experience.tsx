@@ -1,126 +1,116 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import Image from "next/image";
-import type { StaticImageData } from "next/image";
-import SectionWrapper from "@/components/SectionWrapper";
-import { experiences } from "@/data";
+import { useRef } from "react";
 import { gsap } from "@/lib/gsap";
-import { ScrollTrigger } from "@/lib/gsap";
-import type { Experience } from "@/types";
-
-function ExperienceCard({
-  experience,
-  index,
-}: {
-  experience: Experience;
-  index: number;
-}) {
-  return (
-    <div
-      className={`timeline-item flex gap-6 relative pb-12 ${
-        index !== 0 ? "mt-0" : ""
-      }`}
-      style={{ opacity: 0, transform: "translateY(40px)" }}
-    >
-      {/* Timeline line and icon */}
-      <div className="flex flex-col items-center">
-        <div
-          className="w-12 h-12 rounded-full flex items-center justify-center z-10 shrink-0 border-2 border-[#915eff]"
-          style={{ background: experience.iconBg }}
-        >
-          <Image
-            src={experience.icon as StaticImageData}
-            alt={experience.company_name}
-            width={30}
-            height={30}
-            className="object-contain"
-          />
-        </div>
-        {index < experiences.length - 1 && (
-          <div className="w-0.5 flex-1 bg-[#915eff]/30 mt-2" />
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="bg-[#1d1836] rounded-2xl p-6 flex-1 border border-border">
-        <div>
-          <h3 className="text-white text-[24px] font-bold">
-            {experience.title}
-          </h3>
-          <p className="text-secondary text-[16px] font-semibold mt-1">
-            {experience.company_name}
-          </p>
-          <p className="text-secondary/60 text-[13px] mt-1">{experience.date}</p>
-        </div>
-
-        <ul className="mt-4 list-disc ml-5 space-y-2">
-          {experience.points.map((point, i) => (
-            <li
-              key={i}
-              className="text-white-100 text-[14px] pl-1 tracking-wider"
-            >
-              {point}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
+import { useGSAP } from "@gsap/react";
+import { experiences } from "@/data";
+import { Card, CardContent } from "@/components/ui/card";
+import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 export default function Experience() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".exp-heading", {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".exp-heading",
-          start: "top 85%",
-        },
-      });
+  useGSAP(() => {
+    gsap.from(".exp-header", {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".exp-header",
+        start: "top 85%",
+      },
+    });
 
-      gsap.utils.toArray<HTMLElement>(".timeline-item").forEach((item, i) => {
-        gsap.to(item, {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-          },
-          delay: i * 0.1,
-        });
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+    gsap.from(".exp-card", {
+      y: 40,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.15,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".exp-container",
+        start: "top 80%",
+      },
+    });
+  }, { scope: sectionRef });
 
   return (
-    <SectionWrapper id="work">
-      <div ref={sectionRef}>
-        <div className="exp-heading">
-          <p className="sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider">
-            What I have done so far
-          </p>
-          <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
-            Experience.
-          </h2>
-        </div>
-
-        <div className="mt-20">
-          {experiences.map((exp, index) => (
-            <ExperienceCard key={index} experience={exp} index={index} />
-          ))}
-        </div>
+    <section 
+      id="experience" 
+      ref={sectionRef} 
+      className="w-full py-24 bg-background max-w-7xl mx-auto px-6"
+    >
+      <div className="flex flex-col items-center justify-center text-center exp-header mb-16 gap-4">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+          Professional Experience
+        </h2>
+        <p className="text-muted-foreground max-w-2xl text-base md:text-lg">
+          Over 2 years of experience building scalable web applications and developing impactful solutions.
+        </p>
       </div>
-    </SectionWrapper>
+
+      <div className="exp-container flex flex-col gap-6 w-full max-w-4xl mx-auto">
+        {experiences.map((exp, index) => {
+          // Generate pseudo-badges from description or hardcoded based on common MERN
+          const badgeTexts = index === 0 
+            ? ["React", "Express.js", "MongoDB", "Node.js"] 
+            : index === 1 
+            ? ["React", "Payload CMS", "Front-end", "Performance"] 
+            : ["MERN Stack", "REST APIs", "CI/CD", "Optimization"];
+
+          return (
+            <Card key={index} className="exp-card border border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden hover:border-border transition-colors group">
+              <CardContent className="p-6 sm:p-8 flex flex-col gap-4">
+                <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4 mb-2">
+                  
+                  {/* Left Side: Role and Company */}
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                      <Briefcase className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                      {exp.title}
+                    </h3>
+                    <p className="text-lg font-medium text-muted-foreground">
+                      {exp.company_name}
+                    </p>
+                  </div>
+
+                  {/* Right Side: Date and Location */}
+                  <div className="flex flex-col gap-2 sm:items-end text-sm font-medium text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      <span>{exp.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4" />
+                      <span>{index === 1 ? "Remote / Egypt" : "Egypt"}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-muted-foreground/90 font-normal leading-relaxed text-sm sm:text-base">
+                  <p>
+                    {exp.points.join(" ")}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {badgeTexts.map((txt, idx) => (
+                    <Badge 
+                      key={idx} 
+                      variant="secondary" 
+                      className="bg-secondary/60 hover:bg-secondary text-secondary-foreground font-medium py-1 px-3 border border-border/40"
+                    >
+                      {txt}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+    </section>
   );
 }
