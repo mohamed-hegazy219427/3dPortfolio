@@ -13,10 +13,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Target modern browsers — eliminates legacy JS polyfills (~11 KiB savings)
-  experimental: {
-    browsersListForSwc: true,
-  },
 };
 
 export default nextConfig;
