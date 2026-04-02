@@ -1,30 +1,3 @@
-import backend from "./backend.png";
-import web from "./web.png";
-import Ifuture from "./company/ifuture.png";
-import css from "./tech/css.png";
-import docker from "./tech/docker.png";
-import figma from "./tech/figma.png";
-import git from "./tech/git.png";
-import html from "./tech/html.png";
-import javascript from "./tech/javascript.png";
-import mongodb from "./tech/mongodb.png";
-import nodejs from "./tech/nodejs.png";
-import reactjs from "./tech/reactjs.png";
-import redux from "./tech/redux.png";
-import tailwind from "./tech/tailwind.png";
-import typescript from "./tech/typescript.png";
-import threejs from "./tech/threejs.svg";
-import bitc from "./company/bitc.png";
-import Route from "./company/Route.jpg";
-import bootstrap from "./tech/bootstrap.png";
-import mongoose from "./tech/mongoose.png";
-import sequelize from "./tech/sequelize.svg";
-import payload from "./tech/payload.jpg";
-import kareem from "./testimonials/kareeim.jpg";
-import hussein from "./testimonials/Ahmed Hussein.jpg";
-import alaa from "./testimonials/alaa.jpg";
-import azony from "./testimonials/azony.jpg";
-import ali from "./testimonials/ali.jpg";
 import freshCart from "./projects/freshCart.png";
 import travel from "./projects/travel_app.png";
 import fokir from "./projects/fokir.png";
@@ -34,62 +7,15 @@ import gpt3 from "./projects/gpt3.png";
 import yummy from "./projects/yummy.png";
 import weather from "./projects/weather.png";
 import forkify from "./projects/forkify.png";
-import nest from "./tech/Nest.js.png";
-import nextjs from "./tech/Next.js.png";
-import prisma from "./tech/icons8-prisma-orm-50.png";
-import chackra from "./tech/chakra-ui-icon.png";
-import shadcn from "./tech/shadcn-ui-seeklogo.png";
-import daisy from "./tech/daisyui-seeklogo.png";
-import sanity from "./tech/Sanity.png";
-import framerMotion from "./tech/framer-motion.png";
-import gsapIcon from "./tech/gsap-greensock.png";
-import express from "./tech/Express.png";
 
 export {
-  travel,
-  nest,
-  nextjs,
-  prisma,
-  chackra,
-  shadcn,
-  daisy,
-  sanity,
-  framerMotion,
-  gsapIcon,
-  express,
-  forkify,
-  bitc,
   freshCart,
-  gpt3,
+  travel,
   fokir,
   gameOver,
   gameReviews,
+  gpt3,
   yummy,
   weather,
-  payload,
-  sequelize,
-  mongoose,
-  bootstrap,
-  backend,
-  web,
-  Ifuture,
-  css,
-  docker,
-  figma,
-  git,
-  html,
-  javascript,
-  mongodb,
-  nodejs,
-  reactjs,
-  redux,
-  tailwind,
-  typescript,
-  threejs,
-  Route,
-  kareem,
-  hussein,
-  alaa,
-  azony,
-  ali,
+  forkify,
 };

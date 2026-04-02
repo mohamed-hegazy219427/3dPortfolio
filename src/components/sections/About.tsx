@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
-import type { StaticImageData } from "next/image";
+import type { ComponentType } from "react";
 import { services } from "@/data";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
@@ -10,11 +9,11 @@ import { User } from "lucide-react";
 
 interface ServiceCardProps {
   title: string;
-  icon: StaticImageData | string;
+  icon: ComponentType<{ className?: string }>;
   index: number;
 }
 
-function ServiceCard({ title, icon, index }: ServiceCardProps) {
+function ServiceCard({ title, icon: Icon, index }: ServiceCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -62,13 +61,7 @@ function ServiceCard({ title, icon, index }: ServiceCardProps) {
       >
         <div className="card bg-base-200/50 border border-base-300/50 hover:border-primary/20 rounded-2xl py-8 px-10 min-h-[260px] flex justify-evenly items-center flex-col transition-all duration-300 group">
           <div className={`w-16 h-16 rounded-2xl bg-linear-to-br ${gradients[index % gradients.length]} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
-            <Image
-              src={icon}
-              alt={title}
-              width={36}
-              height={36}
-              className="object-contain brightness-0 invert"
-            />
+            <Icon className="w-9 h-9 text-white" />
           </div>
           <h3 className="text-base-content text-lg font-bold text-center mt-4">
             {title}

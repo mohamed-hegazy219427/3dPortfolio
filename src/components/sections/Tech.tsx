@@ -4,6 +4,44 @@ import { useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { Code, Settings, Globe, Layers, Database, TestTube } from "lucide-react";
+import {
+  SiJavascript, SiTypescript, SiHtml5, SiCss,
+  SiReact, SiNextdotjs, SiRedux, SiGreensock, SiFramer, SiThreedotjs,
+  SiTailwindcss, SiBootstrap, SiChakraui,
+  SiNodedotjs, SiExpress, SiNestjs,
+  SiMongodb, SiPostgresql, SiSequelize, SiPrisma, SiSanity,
+  SiDocker, SiGit, SiFigma, SiJest,
+} from "react-icons/si";
+import type { IconType } from "react-icons";
+
+const skillIcons: Record<string, IconType> = {
+  "JavaScript": SiJavascript,
+  "TypeScript": SiTypescript,
+  "HTML 5": SiHtml5,
+  "CSS 3": SiCss,
+  "React JS": SiReact,
+  "React Native": SiReact,
+  "Next JS": SiNextdotjs,
+  "Redux Toolkit": SiRedux,
+  "GSAP": SiGreensock,
+  "Framer Motion": SiFramer,
+  "Three JS": SiThreedotjs,
+  "Tailwind CSS": SiTailwindcss,
+  "Bootstrap": SiBootstrap,
+  "Chakra UI": SiChakraui,
+  "Node JS": SiNodedotjs,
+  "Express JS": SiExpress,
+  "Nest JS": SiNestjs,
+  "MongoDB": SiMongodb,
+  "PostgreSQL": SiPostgresql,
+  "Sequelize": SiSequelize,
+  "Prisma": SiPrisma,
+  "Sanity": SiSanity,
+  "Docker": SiDocker,
+  "Git": SiGit,
+  "Figma": SiFigma,
+  "Jest": SiJest,
+};
 
 const skillCategories = [
   {
@@ -146,14 +184,18 @@ export default function Tech() {
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-2 mt-4">
-                {category.skills.map((skill, skillIdx) => (
-                  <span
-                    key={skillIdx}
-                    className={`skill-badge badge ${category.badgeColor} badge-outline badge-sm py-3 px-3 font-medium hover:scale-105 transition-all duration-200 cursor-default`}
-                  >
-                    {skill}
-                  </span>
-                ))}
+                {category.skills.map((skill, skillIdx) => {
+                  const Icon = skillIcons[skill];
+                  return (
+                    <span
+                      key={skillIdx}
+                      className={`skill-badge badge ${category.badgeColor} badge-outline badge-sm py-3 px-3 font-medium hover:scale-105 transition-all duration-200 cursor-default gap-1.5`}
+                    >
+                      {Icon && <Icon className="w-3.5 h-3.5 shrink-0" />}
+                      {skill}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           </div>

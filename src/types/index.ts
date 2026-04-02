@@ -1,4 +1,5 @@
 import type { StaticImageData } from "next/image";
+import type { ComponentType } from "react";
 
 export interface NavLink {
   id: string;
@@ -7,7 +8,7 @@ export interface NavLink {
 
 export interface Service {
   title: string;
-  icon: StaticImageData | string;
+  icon: ComponentType<{ className?: string }>;
 }
 
 export interface Technology {
@@ -22,7 +23,7 @@ export interface ExperiencePoint {
 export interface Experience {
   title: string;
   company_name: string;
-  icon: StaticImageData | string;
+  icon: ComponentType<{ className?: string }>;
   iconBg: string;
   date: string;
   points: string[];
@@ -33,7 +34,6 @@ export interface Testimonial {
   name: string;
   designation: string;
   company: string;
-  image: StaticImageData | string;
 }
 
 export interface ProjectTag {

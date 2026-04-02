@@ -1,8 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
-import type { StaticImageData } from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { experiences } from "@/data";
@@ -103,7 +101,7 @@ export default function Experience() {
   const badgeMap = [
     ["React", "Express.js", "MongoDB", "Node.js"],
     ["React", "Payload CMS", "Front-end", "Performance"],
-    ["MERN Stack", "REST APIs", "CI/CD", "Optimization"],
+    ["MERN Stack", "REST APIs", "CI/CD", "Optimization","React Native"],
     ["Next.js", "NestJS", "TypeScript", "Prisma", "RBAC"],
   ];
 
@@ -146,16 +144,10 @@ export default function Experience() {
                     <div className="flex items-start gap-4">
                       {/* Company icon */}
                       <div
-                        className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-md border border-base-300/40 overflow-hidden"
+                        className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 shadow-md border border-base-300/40"
                         style={{ background: exp.iconBg }}
                       >
-                        <Image
-                          src={exp.icon as StaticImageData}
-                          alt={exp.company_name}
-                          width={36}
-                          height={36}
-                          className="object-contain"
-                        />
+                        <exp.icon className="w-7 h-7 text-white/90" />
                       </div>
                       <div className="flex flex-col gap-1">
                         <h3 className="card-title text-xl font-bold flex items-center gap-2 text-base-content">

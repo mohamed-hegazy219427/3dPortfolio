@@ -1,8 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
-import type { StaticImageData } from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { testimonials as localTestimonials } from "@/data";
@@ -10,12 +8,8 @@ import type { Testimonial } from "@/types";
 import { MessageSquareQuote, Star, Quote } from "lucide-react";
 
 function TestimonialCard({ item }: { item: Testimonial }) {
-  const isStaticImage = typeof item.image !== "string";
-
   return (
-    <div
-      className={`testimonial-card card bg-base-100 border border-base-300/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 flex-1 min-w-[300px] max-w-[400px] card-hover-lift`}
-    >
+    <div className="testimonial-card card bg-base-100 border border-base-300/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 flex-1 min-w-[300px] max-w-[400px] card-hover-lift">
       <div className="card-body p-8 flex flex-col justify-between">
         {/* Quote icon */}
         <div className="mb-4">
@@ -36,26 +30,9 @@ function TestimonialCard({ item }: { item: Testimonial }) {
 
         {/* Author */}
         <div className="flex items-center gap-3 pt-4 border-t border-base-300/50">
-          <div className="avatar">
-            <div className="w-11 h-11 rounded-full ring-2 ring-primary/20 ring-offset-2 ring-offset-base-100">
-              {isStaticImage ? (
-                <Image
-                  src={item.image as StaticImageData}
-                  alt={item.name}
-                  width={44}
-                  height={44}
-                  className="rounded-full object-cover"
-                />
-              ) : (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={item.image as string}
-                  alt={item.name}
-                  width={44}
-                  height={44}
-                  className="rounded-full object-cover"
-                />
-              )}
+          <div className="avatar placeholder">
+            <div className="w-11 h-11 rounded-full ring-2 ring-primary/20 ring-offset-2 ring-offset-base-100 bg-primary/10 text-primary font-bold flex items-center justify-center text-lg select-none">
+              <span>{item.name.charAt(0).toUpperCase()}</span>
             </div>
           </div>
           <div className="flex flex-col">

@@ -9,7 +9,9 @@ import StarsClient from "@/components/canvas/StarsClient";
 // Below-fold sections — code-split to reduce initial bundle
 const Experience = dynamic(() => import("@/components/sections/Experience"));
 const Works = dynamic(() => import("@/components/sections/Works"));
-const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
+const Testimonials = dynamic(
+  () => import("@/components/sections/Testimonials"),
+);
 const Contact = dynamic(() => import("@/components/sections/Contact"));
 
 export default function Home() {
