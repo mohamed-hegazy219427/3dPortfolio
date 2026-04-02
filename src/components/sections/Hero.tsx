@@ -1,16 +1,62 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { Link as AriaLink } from "react-aria-components";
-import { Github, Linkedin, Mail, Zap, Sparkles } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Zap,
+  Download,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
+import { navItems } from "@/data";
 
 const GITHUB_AVATAR = "https://avatars.githubusercontent.com/u/48334725";
 
+// Skip "Home" (index 0) — that's the Hero itself. Map the rest to scroll targets.
+// "about-section" is the About component which sits below the Hero but has no nav item.
+const SECTIONS = [
+  { id: "about-section", label: "About" },
+  ...navItems.slice(1).map((item) => ({ id: item.id, label: item.title })),
+];
+
+function getNextIdx(): number {
+  const viewportMid = window.innerHeight * 0.4;
+  for (let i = SECTIONS.length - 1; i >= 0; i--) {
+    const el = document.getElementById(SECTIONS[i].id);
+    if (el && el.getBoundingClientRect().top <= viewportMid) return i + 1;
+  }
+  return 0;
+}
+
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [nextIdx, setNextIdx] = useState(0);
+
+  // Sync next destination label on scroll
+  useEffect(() => {
+    const update = () => setNextIdx(getNextIdx());
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
+  const atEnd = nextIdx >= SECTIONS.length;
+  const nextLabel = atEnd ? "Back to top" : SECTIONS[nextIdx].label;
+
+  const handleScrollClick = () => {
+    if (atEnd) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      document
+        .getElementById(SECTIONS[nextIdx].id)
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   useGSAP(
     () => {
@@ -153,7 +199,7 @@ export default function Hero() {
     <section
       id="about"
       ref={containerRef}
-      className="relative w-full min-h-screen mx-auto flex flex-col justify-center overflow-hidden pt-24"
+      className="relative w-full min-h-screen mx-auto flex flex-col justify-center overflow-hidden pt-20 sm:pt-24"
     >
       {/* Ambient gradient blobs */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/8 rounded-full blur-[130px] pointer-events-none z-1" />
@@ -163,16 +209,16 @@ export default function Hero() {
       {/* Bottom blend — fades stars into the next section */}
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-base-100 via-base-100/60 to-transparent pointer-events-none z-2" />
 
-      <div className="max-w-7xl mx-auto px-6 w-full flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20 z-10 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex flex-col-reverse lg:flex-row items-center gap-6 sm:gap-10 lg:gap-20 z-10 relative pb-20 lg:pb-0">
         {/* Left Content */}
-        <div className="flex-[1.2] flex flex-col items-start gap-6 w-full">
+        <div className="flex-[1.2] flex flex-col items-start gap-4 sm:gap-6 w-full">
           <div className="hero-badge badge badge-outline badge-lg gap-2 px-4 py-3 font-medium">
             <Zap size={14} className="text-primary" />
             <span>Available for Work</span>
           </div>
 
           <div className="flex flex-col gap-2">
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-base-content leading-[1.1]">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-base-content leading-[1.1]">
               <span className="hero-title-line block overflow-hidden">
                 Hi, I&apos;m
               </span>
@@ -181,7 +227,7 @@ export default function Hero() {
                   Mohamed Hegazy
                 </span>
               </span>
-              <span className="hero-title-line block overflow-hidden text-2xl sm:text-3xl lg:text-4xl font-semibold text-base-content/70 mt-1">
+              <span className="hero-title-line block overflow-hidden text-xl sm:text-3xl lg:text-4xl font-semibold text-base-content/70 mt-1">
                 Full-Stack &amp; Mobile Developer
               </span>
             </h1>
@@ -200,17 +246,18 @@ export default function Hero() {
             </span>
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 mt-2">
-            <AriaLink
-              href="#"
-              className="hero-cta btn btn-primary btn-lg rounded-full shadow-lg px-8 font-semibold hover:shadow-primary/25 hover:shadow-xl transition-all duration-300 animate-pulse-glow"
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-2">
+            <a
+              href="/Mohamed_Hegazy_CV.pdf"
+              download="Mohamed_Hegazy_CV.pdf"
+              className="hero-cta btn btn-primary btn-md sm:btn-lg rounded-full shadow-lg px-6 sm:px-8 font-semibold hover:shadow-primary/25 hover:shadow-xl transition-all duration-300 animate-pulse-glow"
             >
-              <Sparkles size={18} />
-              Download Resume
-            </AriaLink>
+              <Download size={16} />
+              Download CV
+            </a>
             <AriaLink
               href="#works"
-              className="hero-cta btn btn-outline btn-lg rounded-full px-8 font-semibold hover:btn-primary transition-all duration-300"
+              className="hero-cta btn btn-outline btn-md sm:btn-lg rounded-full px-6 sm:px-8 font-semibold hover:btn-primary transition-all duration-300"
             >
               View My Work
             </AriaLink>
@@ -247,7 +294,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex items-center gap-10 mt-10 pt-10 border-t border-base-300/50 w-full">
+          <div className="flex items-center gap-6 sm:gap-10 mt-6 sm:mt-10 pt-6 sm:pt-10 border-t border-base-300/50 w-full">
             {[
               { value: "15+", label: "Projects Shipped" },
               { value: "2+", label: "Years Exp" },
@@ -266,8 +313,8 @@ export default function Hero() {
         </div>
 
         {/* Right Content — Avatar */}
-        <div className="hero-avatar flex-1 flex justify-center lg:justify-end w-full relative">
-          <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-[450px] md:h-[450px]">
+        <div className="hero-avatar flex-1 flex justify-center lg:justify-end w-full relative mt-4 sm:mt-0">
+          <div className="relative w-52 h-52 sm:w-72 sm:h-72 md:w-[360px] md:h-[360px] lg:w-[420px] lg:h-[420px]">
             <div className="hero-avatar-glow absolute inset-0 rounded-full bg-linear-to-br from-primary/20 via-secondary/20 to-accent/20 blur-2xl animate-float" />
             <div className="absolute inset-4 bg-base-200 rounded-full overflow-hidden flex items-center justify-center shadow-2xl ring-1 ring-base-300/50">
               <Image
@@ -294,17 +341,19 @@ export default function Hero() {
 
       <button
         type="button"
-        className="hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 group z-20 px-6 pb-2 pt-1 cursor-pointer select-none"
-        aria-label="Scroll to next section"
-        onClick={() => {
-          document.getElementById("about-section")?.scrollIntoView({ behavior: "smooth" });
-        }}
+        className="hero-scroll fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 group z-20 px-6 pb-2 pt-1 cursor-pointer select-none"
+        aria-label={`Navigate to ${nextLabel}`}
+        onClick={handleScrollClick}
       >
         <span className="text-[10px] font-semibold text-base-content/40 uppercase tracking-[0.2em] group-hover:text-primary transition-colors duration-300">
-          Scroll to explore
+          {nextLabel}
         </span>
-        <div className="w-6 h-10 rounded-full border-2 border-base-content/25 group-hover:border-primary transition-colors duration-300 flex items-start justify-center pt-1.5 group-hover:shadow-[0_0_12px] group-hover:shadow-primary/30">
-          <div className="w-1 h-2.5 rounded-full bg-primary animate-[scrollDot_1.6s_ease-in-out_infinite]" />
+        <div className="w-8 h-8 rounded-full border-2 border-base-content/25 group-hover:border-primary transition-colors duration-300 flex items-center justify-center group-hover:shadow-[0_0_12px] group-hover:shadow-primary/30">
+          {atEnd ? (
+            <ChevronUp className="w-4 h-4 text-primary animate-bounce" />
+          ) : (
+            <ChevronDown className="w-4 h-4 text-primary animate-bounce" />
+          )}
         </div>
       </button>
     </section>

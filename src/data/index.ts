@@ -1,5 +1,4 @@
 import type {
-  NavLink,
   Service,
   Experience,
   Testimonial,
@@ -17,12 +16,21 @@ import {
   travel,
 } from "@/assets";
 import { SiReact, SiNodedotjs, SiDocker } from "react-icons/si";
-import { BookOpen, Sparkles, Building2, ConciergeBell, Smartphone } from "lucide-react";
+import {
+  BookOpen,
+  Sparkles,
+  Building2,
+  ConciergeBell,
+  Smartphone,
+} from "lucide-react";
 
-export const navLinks: NavLink[] = [
-  { id: "about", title: "About" },
-  { id: "work", title: "Work" },
-  { id: "contact", title: "Contact" },
+export const navItems = [
+  { id: "about",        title: "Home" },
+  { id: "tech",         title: "Skills" },
+  { id: "experience",   title: "Experience" },
+  { id: "works",        title: "Projects" },
+  { id: "testimonials", title: "Reviews" },
+  { id: "contact",      title: "Contact" },
 ];
 
 export const services: Service[] = [
@@ -31,7 +39,6 @@ export const services: Service[] = [
   { title: "Backend Developer", icon: SiNodedotjs },
   { title: "DevOps Engineer", icon: SiDocker },
 ];
-
 
 export const experiences: Experience[] = [
   {
