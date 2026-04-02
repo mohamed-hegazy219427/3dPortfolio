@@ -3,44 +3,70 @@
 import { useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
-import { Code, Settings, Globe, Layers, Database, TestTube } from "lucide-react";
 import {
-  SiJavascript, SiTypescript, SiHtml5, SiCss,
-  SiReact, SiNextdotjs, SiRedux, SiGreensock, SiFramer, SiThreedotjs,
-  SiTailwindcss, SiBootstrap, SiChakraui,
-  SiNodedotjs, SiExpress, SiNestjs,
-  SiMongodb, SiPostgresql, SiSequelize, SiPrisma, SiSanity,
-  SiDocker, SiGit, SiFigma, SiJest,
+  Code,
+  Settings,
+  Globe,
+  Layers,
+  Database,
+  TestTube,
+} from "lucide-react";
+import {
+  SiJavascript,
+  SiTypescript,
+  SiHtml5,
+  SiCss,
+  SiReact,
+  SiNextdotjs,
+  SiRedux,
+  SiGreensock,
+  SiFramer,
+  SiThreedotjs,
+  SiTailwindcss,
+  SiBootstrap,
+  SiChakraui,
+  SiNodedotjs,
+  SiExpress,
+  SiNestjs,
+  SiMongodb,
+  SiPostgresql,
+  SiSequelize,
+  SiPrisma,
+  SiSanity,
+  SiDocker,
+  SiGit,
+  SiFigma,
+  SiJest,
 } from "react-icons/si";
 import type { IconType } from "react-icons";
 
 const skillIcons: Record<string, IconType> = {
-  "JavaScript": SiJavascript,
-  "TypeScript": SiTypescript,
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
   "HTML 5": SiHtml5,
   "CSS 3": SiCss,
   "React JS": SiReact,
   "React Native": SiReact,
   "Next JS": SiNextdotjs,
   "Redux Toolkit": SiRedux,
-  "GSAP": SiGreensock,
+  GSAP: SiGreensock,
   "Framer Motion": SiFramer,
   "Three JS": SiThreedotjs,
   "Tailwind CSS": SiTailwindcss,
-  "Bootstrap": SiBootstrap,
+  Bootstrap: SiBootstrap,
   "Chakra UI": SiChakraui,
   "Node JS": SiNodedotjs,
   "Express JS": SiExpress,
   "Nest JS": SiNestjs,
-  "MongoDB": SiMongodb,
-  "PostgreSQL": SiPostgresql,
-  "Sequelize": SiSequelize,
-  "Prisma": SiPrisma,
-  "Sanity": SiSanity,
-  "Docker": SiDocker,
-  "Git": SiGit,
-  "Figma": SiFigma,
-  "Jest": SiJest,
+  MongoDB: SiMongodb,
+  PostgreSQL: SiPostgresql,
+  Sequelize: SiSequelize,
+  Prisma: SiPrisma,
+  Sanity: SiSanity,
+  Docker: SiDocker,
+  Git: SiGit,
+  Figma: SiFigma,
+  Jest: SiJest,
 };
 
 const skillCategories = [
@@ -56,7 +82,15 @@ const skillCategories = [
     icon: <Globe className="w-5 h-5" />,
     gradient: "from-purple-500 to-pink-400",
     badgeColor: "badge-secondary",
-    skills: ["React JS", "React Native", "Next JS", "Redux Toolkit", "GSAP", "Framer Motion", "Three JS"],
+    skills: [
+      "React JS",
+      "React Native",
+      "Next JS",
+      "Redux Toolkit",
+      "GSAP",
+      "Framer Motion",
+      "Three JS",
+    ],
   },
   {
     title: "Web Frameworks & UI",
@@ -70,7 +104,19 @@ const skillCategories = [
     icon: <Database className="w-5 h-5" />,
     gradient: "from-emerald-500 to-teal-400",
     badgeColor: "badge-info",
-    skills: ["Node JS", "Express JS", "Nest JS", "MongoDB", "Mongoose", "PostgreSQL", "TypeORM", "Sequelize", "Prisma", "Payload", "Sanity"],
+    skills: [
+      "Node JS",
+      "Express JS",
+      "Nest JS",
+      "MongoDB",
+      "Mongoose",
+      "PostgreSQL",
+      "TypeORM",
+      "Sequelize",
+      "Prisma",
+      "Payload CMS",
+      "Sanity",
+    ],
   },
   {
     title: "DevOps & Tools",
@@ -91,61 +137,78 @@ const skillCategories = [
 export default function Tech() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    // Header entrance
-    const headerTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".tech-header",
-        start: "top 85%",
-      },
-    });
-    headerTl
-      .fromTo(".tech-badge", { opacity: 0, y: 20, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5 })
-      .fromTo(".tech-title", { opacity: 0, y: 30, clipPath: "inset(100% 0% 0% 0%)" }, { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)", duration: 0.6 }, "-=0.3")
-      .fromTo(".tech-subtitle", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.3");
-
-    // Cards stagger entrance with a nice scale + rotation
-    gsap.utils.toArray<HTMLElement>(".tech-card").forEach((card, i) => {
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 50, scale: 0.92, rotateX: 8 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          rotateX: 0,
-          duration: 0.6,
-          delay: i * 0.08,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".tech-container",
-            start: "top 82%",
-          },
+  useGSAP(
+    () => {
+      // Header entrance
+      const headerTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".tech-header",
+          start: "top 85%",
         },
-      );
-    });
+      });
+      headerTl
+        .fromTo(
+          ".tech-badge",
+          { opacity: 0, y: 20, scale: 0.9 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.5 },
+        )
+        .fromTo(
+          ".tech-title",
+          { opacity: 0, y: 30, clipPath: "inset(100% 0% 0% 0%)" },
+          { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)", duration: 0.6 },
+          "-=0.3",
+        )
+        .fromTo(
+          ".tech-subtitle",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5 },
+          "-=0.3",
+        );
 
-    // Skill badges stagger inside each card
-    gsap.utils.toArray<HTMLElement>(".tech-card").forEach((card) => {
-      const badges = card.querySelectorAll(".skill-badge");
-      gsap.fromTo(
-        badges,
-        { opacity: 0, scale: 0.8, y: 10 },
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 0.3,
-          stagger: 0.04,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
+      // Cards stagger entrance with a nice scale + rotation
+      gsap.utils.toArray<HTMLElement>(".tech-card").forEach((card, i) => {
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 50, scale: 0.92, rotateX: 8 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            rotateX: 0,
+            duration: 0.6,
+            delay: i * 0.08,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".tech-container",
+              start: "top 82%",
+            },
           },
-        },
-      );
-    });
-  }, { scope: containerRef });
+        );
+      });
+
+      // Skill badges stagger inside each card
+      gsap.utils.toArray<HTMLElement>(".tech-card").forEach((card) => {
+        const badges = card.querySelectorAll(".skill-badge");
+        gsap.fromTo(
+          badges,
+          { opacity: 0, scale: 0.8, y: 10 },
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.3,
+            stagger: 0.04,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+            },
+          },
+        );
+      });
+    },
+    { scope: containerRef },
+  );
 
   return (
     <section
@@ -165,7 +228,8 @@ export default function Tech() {
           Technical Skills
         </h2>
         <p className="tech-subtitle text-base-content/60 max-w-2xl text-base md:text-lg">
-          Comprehensive expertise across modern development stack with focus on scalable web applications and devops practices.
+          Comprehensive expertise across modern development stack with focus on
+          scalable web applications and devops practices.
         </p>
       </div>
 
@@ -178,7 +242,9 @@ export default function Tech() {
           >
             <div className="card-body p-6">
               <h3 className="card-title text-base font-semibold text-base-content flex items-center gap-3">
-                <div className={`w-10 h-10 rounded-xl bg-linear-to-br ${category.gradient} flex items-center justify-center text-white group-hover:scale-110 group-hover:shadow-lg transition-all duration-300`}>
+                <div
+                  className={`w-10 h-10 rounded-xl bg-linear-to-br ${category.gradient} flex items-center justify-center text-white group-hover:scale-110 group-hover:shadow-lg transition-all duration-300`}
+                >
                   {category.icon}
                 </div>
                 {category.title}
